@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/styles/bootstrap.css') }}">
+    <!-- <link rel="stylesheet" href="assets/styles/style1.scss"> -->
+    <link rel="stylesheet" href={{ asset('assets/styles/style.css') }}>
+{% endblock %}
+
+{% block title %}Hello CompteController!{% endblock %}
+
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <!-- Profil code-->
+
+    <br><br><br>
+    <h1 style="text-align: center;color: #0a58ca">MON COMPTE</h1><br>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="..\images/profil.jpeg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">COORDONNEES</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Description:</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Statistiques:</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Profil Code -->
+
+    <br><br><br>
+    <div class="example-wrapper">
+        <h1>Hello guys ! ✅</h1>
+
+        This friendly message is coming from:
+        <ul>
+            <li>Your controller at <code><a href="{{ 'C:/Users/DELL/PhpstormProjects/ProjetINF8/src/Controller/CompteController.php'|file_link(0) }}">src/Controller/SecurityController.php</a></code></li>
+            <li>Your template at <code><a href="{{ 'C:/Users/DELL/PhpstormProjects/ProjetINF8/templates/home/compte.html.twig'|file_link(0) }}">templates/security/index.html.twig</a></code></li>
+        </ul>
+    </div>
+{% endblock %}

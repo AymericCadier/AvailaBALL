@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire Modal</title>
+    <style>
+        /* Styles pour la boîte de dialogue modale */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Styles pour le fond obscurci lorsque la boîte de dialogue modale est ouverte */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+    </style>
+    <script>
+        // Fonction pour afficher la boîte de dialogue modale
+        function afficherModal() {
+            var modal = document.getElementById('myModal');
+            var overlay = document.getElementById('overlay');
+            modal.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        // Fonction pour masquer la boîte de dialogue modale
+        function fermerModal() {
+            var modal = document.getElementById('myModal');
+            var overlay = document.getElementById('overlay');
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+
+<button onclick="afficherModal()">Afficher le Formulaire</button>
+
+<!-- Boîte de dialogue modale -->
+<div id="myModal" class="modal">
+    <span onclick="fermerModal()" style="cursor: pointer; float: right;">&times;</span>
+    <h2>Mon Formulaire</h2>
+    <form>
+        <!-- Ajoutez vos champs de formulaire ici -->
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+
+        <input type="submit" value="Soumettre">
+    </form>
+</div>
+
+<!-- Fond obscurci -->
+<div id="overlay" class="overlay" onclick="fermerModal()"></div>
+
+</body>
+</html>

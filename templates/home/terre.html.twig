@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/styles/bootstrap.css') }}">
+    <!-- <link rel="stylesheet" href="assets/styles/style1.scss"> -->
+    <link rel="stylesheet" href={{ asset('assets/styles/style.css') }}>
+{% endblock %}
+
+{% block title %}Hello TerrController!{% endblock %}
+
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <br><br><br>
+
+    <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
+
+    <div class="example-wrapper">
+        <h1>Hello guys ! ✅</h1>
+
+        This friendly message is coming from:
+        <ul>
+            <li>Your controller at <code><a href="{{ 'C:/Users/DELL/PhpstormProjects/ProjetINF8/src/Controller/TerrController.php'|file_link(0) }}">src/Controller/SecurityController.php</a></code></li>
+            <li>Your template at <code><a href="{{ 'C:/Users/DELL/PhpstormProjects/ProjetINF8/templates/home/terr.html.twig'|file_link(0) }}">templates/security/index.html.twig</a></code></li>
+        </ul>
+    </div>
+{% endblock %}
