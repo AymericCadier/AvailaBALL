@@ -3,8 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User
@@ -14,47 +16,81 @@ class User
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $lname = null;
 
-    /**
-     * @Assert\NotBlank
-     * @Assert\Email
-     */
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $fname = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $username = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $email = null;
 
-
-    /**
-     * @Assert\NotBlank
-     * @Assert\Length(min=16)
-     */
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $password = null;
 
-    /**
-     * @Assert\NotBlank
-     * @Assert\EqualTo(propertyPath="password", message="Les mots de passe ne correspondent pas.")
-     */
-    #[ORM\Column(length: 255)]
-    private ?string $confirmPassword = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $created_at = null;
 
-    #[ORM\Column(length: 100)]
-    private ?string $address = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $deleted_at = null;
 
-    #[ORM\Column(length: 100)]
-    private ?string $address2 = null;
+    #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Session::class)]
+    private Collection $sessions;
 
-    #[ORM\Column(length: 65)]
-    private ?string $city = null;
-
-    #[ORM\Column(length: 65)]
-    private ?string $state = null;
-
-    #[ORM\Column]
-    private ?int $zip = null;
+    public function __construct()
+    {
+        $this->sessions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(int $id): static
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function getLname(): ?string
+    {
+        return $this->lname;
+    }
+
+    public function setLname(?string $lname): static
+    {
+        $this->lname = $lname;
+
+        return $this;
+    }
+
+    public function getFname(): ?string
+    {
+        return $this->fname;
+    }
+
+    public function setFname(?string $fname): static
+    {
+        $this->fname = $fname;
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(?string $username): static
+    {
+        $this->username = $username;
+
+        return $this;
     }
 
     public function getEmail(): ?string
@@ -62,7 +98,7 @@ class User
         return $this->email;
     }
 
-    public function setEmail(string $email): static
+    public function setEmail(?string $email): static
     {
         $this->email = $email;
 
@@ -74,81 +110,63 @@ class User
         return $this->password;
     }
 
-    public function setPassword(string $password): static
+    public function setPassword(?string $password): static
     {
         $this->password = $password;
 
         return $this;
     }
 
-    public function getConfirmPassword(): ?string
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->confirmPassword;
+        return $this->created_at;
     }
 
-    public function setConfirmPassword(string $confirmPassword): static
+    public function setCreatedAt(?\DateTimeImmutable $created_at): static
     {
-        $this->confirmPassword = $confirmPassword;
+        $this->created_at = $created_at;
 
         return $this;
     }
 
-    public function getAddress(): ?string
+    public function getDeletedAt(): ?\DateTimeImmutable
     {
-        return $this->address;
+        return $this->deleted_at;
     }
 
-    public function setAddress(string $address): static
+    public function setDeletedAt(?\DateTimeImmutable $deleted_at): static
     {
-        $this->address = $address;
+        $this->deleted_at = $deleted_at;
 
         return $this;
     }
 
-    public function getAddress2(): ?string
+    /**
+     * @return Collection<int, Session>
+     */
+    public function getSessions(): Collection
     {
-        return $this->address2;
+        return $this->sessions;
     }
 
-    public function setAddress2(string $address2): static
+    public function addSession(Session $session): static
     {
-        $this->address2 = $address2;
+        if (!$this->sessions->contains($session)) {
+            $this->sessions->add($session);
+            $session->setIdUser($this);
+        }
 
         return $this;
     }
 
-    public function getCity(): ?string
+    public function removeSession(Session $session): static
     {
-        return $this->city;
-    }
-
-    public function setCity(string $city): static
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    public function getState(): ?string
-    {
-        return $this->state;
-    }
-
-    public function setState(string $state): static
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    public function getZip(): ?int
-    {
-        return $this->zip;
-    }
-
-    public function setZip(int $zip): static
-    {
-        $this->zip = $zip;
+        if ($this->sessions->removeElement($session)) {
+            // set the owning side to null (unless already changed)
+            if ($session->getIdUser() === $this) {
+                $session->setIdUser(null);
+            }
+        }
 
         return $this;
     }
