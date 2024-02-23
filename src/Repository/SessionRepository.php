@@ -21,6 +21,52 @@ class SessionRepository extends ServiceEntityRepository
         parent::__construct($registry, Session::class);
     }
 
+
+    public function findSessionsById($id)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.id = :id')
+            ->setParameter('id', $id)
+            ->orderBy('s.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findSessionsByPlaygroundId($id)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.id_playground = :id')
+            ->setParameter('id', $id)
+            ->orderBy('s.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    public function findSessionsByUserId($id)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.id_user = :id')
+            ->setParameter('id', $id)
+            ->orderBy('s.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findSessionsByDate($date)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.date = :date')
+            ->setParameter('date', $date)
+            ->orderBy('s.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
+
 //    /**
 //     * @return Session[] Returns an array of Session objects
 //     */

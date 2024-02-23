@@ -21,6 +21,46 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
+
+    public function findEventsByPlaygroundId($id)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.id_playground = :id')
+            ->setParameter('id', $id)
+            ->orderBy('e.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findEventsByTime($time)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.time = :time')
+            ->setParameter('time', $time)
+            ->orderBy('e.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findEventsByPlaygroundIdAndDate($id, $date)
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.id_playground = :id')
+            ->andWhere('e.date = :date')
+            ->setParameter('id', $id)
+            ->setParameter('date', $date)
+            ->orderBy('e.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
+
+
 //    /**
 //     * @return Event[] Returns an array of Event objects
 //     */

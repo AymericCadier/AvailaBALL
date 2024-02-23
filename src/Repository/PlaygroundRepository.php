@@ -21,6 +21,26 @@ class PlaygroundRepository extends ServiceEntityRepository
         parent::__construct($registry, Playground::class);
     }
 
+    public function findPlaygroundsById($id)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.id = :id')
+            ->setParameter('id', $id)
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function rankPlaygroundsByRating()
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.note', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Playground[] Returns an array of Playground objects
 //     */
