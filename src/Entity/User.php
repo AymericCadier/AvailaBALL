@@ -31,6 +31,9 @@ class User
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $password = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $confirmPassword = null;
+
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $created_at = null;
 
@@ -39,6 +42,7 @@ class User
 
     #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Session::class)]
     private Collection $sessions;
+
 
     public function __construct()
     {
@@ -117,6 +121,18 @@ class User
         return $this;
     }
 
+    public function getConfirmPassword(): ?string
+    {
+        return $this->confirmPassword;
+    }
+
+    public function setConfirmPassword(?string $confirmPassword): self
+    {
+        $this->confirmPassword = $confirmPassword;
+
+        return $this;
+    }
+
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
@@ -140,6 +156,7 @@ class User
 
         return $this;
     }
+
 
     /**
      * @return Collection<int, Session>
