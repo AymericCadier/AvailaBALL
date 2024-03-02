@@ -33,7 +33,7 @@ class InscriptionController extends AbstractController
                 $user->getUsername(),
                 $user->getEmail(),
                 $user->getPassword(),
-                $user->getCreatedAt()
+                $user->getCurrentDate()
             );
 
             // Rediriger vers la page de connexion

@@ -35,6 +35,7 @@ class User
      * @ORM\Column(type="string", length=255, unique=true, nullable=true)
      * @Assert\Email(message="L'adresse email '{{ value }}' n'est pas valide.")
      */
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -146,6 +147,10 @@ class User
         return $this->created_at;
     }
 
+    public function getCurrentDate(): \DateTimeImmutable
+    {
+        return new \DateTimeImmutable();
+    }
     public function setCreatedAt(?\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
