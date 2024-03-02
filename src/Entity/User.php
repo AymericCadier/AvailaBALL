@@ -6,7 +6,13 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @UniqueEntity(fields={"email"}, message="Cet email est déjà utilisé.")
+ */
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User
@@ -25,7 +31,10 @@ class User
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $username = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    /**
+     * @ORM\Column(type="string", length=255, unique=true, nullable=true)
+     * @Assert\Email(message="L'adresse email '{{ value }}' n'est pas valide.")
+     */
     private ?string $email = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -39,6 +48,9 @@ class User
 
     #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Session::class)]
     private Collection $sessions;
+
+    #[Assert\EqualTo(propertyPath: 'password', message: 'Les mots de passe ne correspondent pas.')]
+    private ?string $confirmPassword = null;
 
     public function __construct()
     {
@@ -113,6 +125,18 @@ class User
     public function setPassword(?string $password): static
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getConfirmPassword(): ?string
+    {
+        return $this->confirmPassword;
+    }
+
+    public function setConfirmPassword(?string $confirmPassword): static
+    {
+        $this->confirmPassword = $confirmPassword;
 
         return $this;
     }

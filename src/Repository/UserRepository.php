@@ -21,13 +21,15 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    public function createUser($lname, $fname ,$username, $password, $email){
+    public function createUser($lname, $fname, $username, $email, $password, $date)
+    {
         $user = new User();
         $user->setLname($lname);
         $user->setFname($fname);
         $user->setUsername($username);
-        $user->setPassword($password);
         $user->setEmail($email);
+        $user->setPassword($password);
+        $user->setCreatedAt($date);
         $this->_em->persist($user);
         $this->_em->flush();
     }
