@@ -69,53 +69,61 @@
         </nav>
     </header>
 #}
-
-<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 250px; height: 100vh;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-
-        <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <img src="../images/logoo.png" alt="Logo" width="215" height="215">
+<div class="d-flex flex-row">
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 250px; height: 100vh;">
+        <!-- Barre latérale -->
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <img src="../images/logoo.png" alt="Logo" width="215" height="215">
+            </div>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link active" aria-current="page">
+                    <i class="fa-solid fa-house fa-lg"></i> <!-- Taille large -->
+                    &nbsp; Home
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="#" class="nav-link text-white">
+                    <i class="fa-solid fa-map fa-lg"></i>
+                    &nbsp; Carte
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="#" class="nav-link text-white">
+                    <i class="fa-solid fa-message fa-lg"></i>
+                    &nbsp; Messagerie
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user fa-2x"></i>
+                <span style="margin-left: 50px;margin-right: 30px; font-size: 20px;"><strong>Compte</strong></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">Paramètre</a></li>
+                <li><a class="dropdown-item" href="#">Profil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Se déconnecter</a></li>
+            </ul>
         </div>
-
-    </a>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item mb-2"> <!-- Ajoute une marge en bas de chaque élément li -->
-            <a href="#" class="nav-link active" aria-current="page">
-                <i class="fa-solid fa-house fa-lg"></i> <!-- Taille large -->
-                &nbsp; Home
-            </a>
-        </li>
-        <li class="mb-2"> <!-- Ajoute une marge en bas de chaque élément li -->
-            <a href="#" class="nav-link text-white">
-                <i class="fa-solid fa-map fa-lg"></i>
-                &nbsp; Carte
-            </a>
-        </li>
-        <li class="mb-2"> <!-- Ajoute une marge en bas de chaque élément li -->
-            <a href="#" class="nav-link text-white">
-                <i class="fa-solid fa-message fa-lg"></i>
-                &nbsp; Messagerie
-            </a>
-        </li>
-    </ul>
-
-
-    <hr>
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa-solid fa-user fa-2x"></i>
-          <span style="margin-left: 50px;margin-right: 30px; font-size: 20px;"><strong>Compte</strong></span>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-        <li><a class="dropdown-item" href="#">Paramètre</a></li>
-        <li><a class="dropdown-item" href="#">Profil</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Se déconnecter</a></li>
-      </ul>
     </div>
-  </div>
-
+    {#
+    <div class="flex-grow-1">
+        <!-- Contenu à droite de la barre latérale -->
+        <div>
+            <!-- Votre contenu ici -->
+            <h1>Contenu à droite de la barre latérale</h1>
+        </div>
+    </div>
+    #}
+</div>
+</body>
+{#
 
     <div class="container">
         {% block body %}{% endblock %}
@@ -129,6 +137,7 @@
     <footer class="mt-5 p-3 bg-light text-center">
         <p>&copy; 2024 Votre Entreprise. Tous droits réservés.</p>
     </footer>
-</body>
+#}
+
 </html>
 
