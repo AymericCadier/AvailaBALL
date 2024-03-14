@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\InscriptionType;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class InscriptionController extends AbstractController
 {
     #[Route('/index/inscription', name: 'app_inscription')]
-    public function inscription(Request $request, UserRepository $userRepository): Response
+    public function inscription(Request $request): Response
     {
         // Créer une nouvelle instance de l'entité User
         $user = new User();
@@ -26,15 +25,13 @@ class InscriptionController extends AbstractController
 
         // Vérifier si le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
-            // Utiliser la méthode createUser du UserRepository pour créer l'utilisateur
-            $userRepository->createUser(
-                $user->getLname(),
-                $user->getFname(),
-                $user->getUsername(),
-                $user->getEmail(),
-                $user->getPassword(),
-                $user->getCurrentDate()
-            );
+            // Définir la date de création
+            $user->setCreatedAt(new \DateTimeImmutable());
+
+            // Enregistrer l'utilisateur dans la base de données
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             // Rediriger vers la page de connexion
             return $this->render('home/login.html.twig');

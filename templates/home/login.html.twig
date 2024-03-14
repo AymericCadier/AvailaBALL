@@ -1,38 +1,30 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('assets/styles/bootstrap.css') }}">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/css/login.css') }}">
+    {% endblock %}
+</head>
+<body>
 
-    <link rel="stylesheet" href={{ asset('login.css') }}>
-{% endblock %}
+<div class="container">
+    <form>
+        <h1>Connexion</h1>
+        <input type="email" class="form-control" id="email" name="_username" aria-describedby="emailHelp" placeholder="Email" required><br>
+        <input type="password" class="form-control" id="password" name="_password" placeholder="Mot de passe" required><br>
+        <input type="button" value="Connexion"><a href={{ path('app_compte') }}></a><br>
+        <a href="#">Mot de passe oublié</a>
+    </form>
+    <div class="drop drop-1"></div>
+    <div class="drop1 drop-2"></div>
+    <div class="drop drop-3"></div>
+    <div class="drop1 drop-4"><a href="{{ path('app_home') }}"><img src="../images/logoo.png" width="120" height="120"></a></div>
+    <div class="drop drop-5"></div>
+</div>
 
-{% block title %}Hello SecurityController!{% endblock %}
-
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-    <br><br><br><br><br><br><br>
-
-    <div>
-        <form method="post" action="{{ path('app_login') }}">
-            <h1>CONNEXION</h1><br>
-            <div class="mb-3">
-                <label for="password" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" name="_username" aria-describedby="emailHelp" required />
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="_password" required />
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form><br>
-    </div>
-
-{% endblock %}
+</body>
+</html>

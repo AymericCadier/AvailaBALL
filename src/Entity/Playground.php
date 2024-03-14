@@ -18,10 +18,10 @@ class Playground
     #[ORM\Column(nullable: true)]
     private ?float $note = null;
 
-    #[ORM\OneToMany(mappedBy: 'idPlayground', targetEntity: Event::class)]
+    #[ORM\OneToMany(mappedBy: 'id_playground', targetEntity: Event::class)]
     private Collection $events;
 
-    #[ORM\OneToMany(mappedBy: 'idPlayground', targetEntity: Session::class)]
+    #[ORM\OneToMany(mappedBy: 'id_playground', targetEntity: Session::class)]
     private Collection $sessions;
 
     public function __construct()
