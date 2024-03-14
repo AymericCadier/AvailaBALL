@@ -1,18 +1,24 @@
 {# templates/home/log.html.twig #}
-
-{% extends 'base.html.twig' %}
-
-{% block title %}AVAILBALL{% endblock %}
+{# {% block title %}AVAILBALL{% endblock %}#}
 
 {% block stylesheets %}
-    {{ parent() }}
     <!-- Ajouter votre propre fichier de style si nécessaire -->
     <link rel="stylesheet" href="assets/styles/style.css">
 {% endblock %}
 
 {% block body %}
+    <div class="d-flex flex-row">
+        {% include 'base.html.twig' %}
 
-
+        <div class="flex-grow-1">
+            <!-- Contenu à droite de la barre latérale -->
+            <div>
+                <!-- Votre contenu ici -->
+                <h1>Contenu à droite de la barre latérale</h1>
+            </div>
+        </div>
+    </div>
+    {#
     <br>
     <br>
     <br>
@@ -22,7 +28,6 @@
         <br>
         <br>
         <h1 col>Bienvenue sur l'application de localisation des terrains de sport</h1><br>
-        {# Ajoutez ici le contenu de votre page d'accueil #}
 
     </div><br>
 
@@ -102,5 +107,5 @@
     </div>
 
     <!-- Fin deuxieme partie -->
-
+    #}
 {% endblock %}
