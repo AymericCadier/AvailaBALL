@@ -20,9 +20,9 @@ class InscriptionType extends AbstractType
             ->add('username')
             ->add('email')
             ->add('password')
-            ->add('confirmPassword')
+            /*->add('confirmPassword')
             ->add('created_at')
-            ->add('deleted_at')
+            ->add('deleted_at') */
             ->add('submit', SubmitType::class, [
                 'label' => 'S\'inscrire',
                 'attr' => ['class' => 'btn btn-primary'],
