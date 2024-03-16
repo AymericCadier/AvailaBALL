@@ -8,10 +8,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
 
 class InscriptionController extends AbstractController
 {
     #[Route('/index/inscription', name: 'app_inscription')]
+
     public function inscription(Request $request): Response
     {
         // Créer une nouvelle instance de l'entité User
@@ -29,16 +31,17 @@ class InscriptionController extends AbstractController
             $user->setCreatedAt(new \DateTimeImmutable());
 
             // Enregistrer l'utilisateur dans la base de données
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
             // Rediriger vers la page de connexion
-            return $this->render('home/login.html.twig');
+            return $this->redirectToRoute('app_login');
         }
 
         // Si le formulaire n'est pas encore soumis ou n'est pas valide, afficher le formulaire
-        return $this->render('home/inscription.html.twig', [
+        return $this->render('home/inscriptionA.html.twig', [
             'form' => $form->createView(),
         ]);
     }
