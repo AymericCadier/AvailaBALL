@@ -138,7 +138,10 @@ class User
     {
         return $this->created_at;
     }
-
+    public function getCurrentDate(): \DateTimeImmutable
+    {
+        return new \DateTimeImmutable();
+    }
     public function setCreatedAt(?\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;

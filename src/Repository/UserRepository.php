@@ -28,12 +28,28 @@ class UserRepository extends ServiceEntityRepository
         $user->setUsername($username);
         $user->setPassword($password);
         $user->setEmail($email);
+        $user->setCreatedAt($user->getCurrentDate());
         $this->_em->persist($user);
         $this->_em->flush();
     }
 
-    public function deleteUser($id){
+    public function deleteUserId($id){
         $user = $this->find($id);
+        $this->_em->remove($user);
+        $this->_em->flush();
+    }
+
+    public function getUserId($id){
+        return $this->find($id);
+    }
+
+    public function getUser($email,$password){
+        $user = $this->findOneBy(['email' => $email, 'password' => $password]);
+        return $user;
+    }
+
+    public function deleteUser($email,$password){
+        $user = $this->findOneBy(['email' => $email, 'password' => $password]);
         $this->_em->remove($user);
         $this->_em->flush();
     }
