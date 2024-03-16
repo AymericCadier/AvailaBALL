@@ -28,6 +28,7 @@ class UserRepository extends ServiceEntityRepository
         $user->setUsername($username);
         $user->setPassword($password);
         $user->setEmail($email);
+        $user->setCreatedAt($user->getCurrentDate());
         $this->_em->persist($user);
         $this->_em->flush();
     }
