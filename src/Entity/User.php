@@ -40,9 +40,26 @@ class User
     #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Session::class)]
     private Collection $sessions;
 
+    // Ajout du champ confirmPassword avec validation
+    #[Assert\EqualTo(propertyPath: 'password', message: "Le mot de passe et sa confirmation doivent correspondre.")]
+    #[Assert\NotBlank]
+    private ?string $confirmPassword = null;
+
     public function __construct()
     {
         $this->sessions = new ArrayCollection();
+    }
+
+    public function getConfirmPassword(): ?string
+    {
+        return $this->confirmPassword;
+    }
+
+    public function setConfirmPassword(?string $confirmPassword): static
+    {
+        $this->confirmPassword = $confirmPassword;
+
+        return $this;
     }
 
     public function getId(): ?int
