@@ -1,0 +1,38 @@
+body {
+    background: linear-gradient(to right, #336570, #051423);
+}
+
+.texte{
+    color: white;
+    text-align: center;
+}
+
+
+p{
+    font-size: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+thead th:first-child,
+tbody td:first-child {
+    width: 65%;
+}
+
+thead th:last-child,
+tbody td:last-child {
+    width: 35%;
+}
+
+
+
+

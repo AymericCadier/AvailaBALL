@@ -1,22 +1,53 @@
-{# templates/home/log.html.twig #}
-{# {% block title %}AVAILBALL{% endblock %}#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
 
-{% block stylesheets %}
-    <!-- Ajouter votre propre fichier de style si nécessaire -->
-    <link rel="stylesheet" href="assets/styles/style.css">
-{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
+    {% endblock %}
+
+</head>
+<body>
 
 {% block body %}
     <div class="d-flex flex-row">
         {% include 'base.html.twig' %}
 
         <div class="flex-grow-1">
-            <!-- Contenu à droite de la barre latérale -->
-            <div>
-                <!-- Votre contenu ici -->
-                <h1>Contenu à droite de la barre latérale</h1>
+            <div class="texte">
+                <h1>Accueil</h1>
+                <p>Bienvenue sur l'application de localisation des terrains de sport</p>
             </div>
+            <br>
+            <br>
+            <br>
+            <div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th scope="col"><img src="../images/logoo.png" width="320" height="320" class="image-top"></th>
+                        <th scope="col">Most interest in</th>
+
+                    </tr>
+                    </thead>
+                    <br>
+                    <br>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Chris</th>
+                        <td><img src="../images/logoo.png" width="320" height="320" class="image-top"></td>
+                    </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
         </div>
+
     </div>
 {#
     <br>
@@ -109,3 +140,7 @@
     <!-- Fin deuxieme partie -->
 #}
 {% endblock %}
+
+
+</body>
+</html>
