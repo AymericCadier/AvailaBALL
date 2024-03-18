@@ -94,7 +94,7 @@
                 </a>
             </li>
             <li class="mb-2">
-                <a href="#" class="nav-link text-white">
+                <a href="{{ path('app_message') }}" class="nav-link text-white">
                     <i class="fa-solid fa-message fa-lg"></i>
                     &nbsp; Messagerie
                 </a>
@@ -108,14 +108,14 @@
                 <span style="margin-left: 50px;margin-right: 30px; font-size: 20px;"><strong>Compte</strong></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">Paramètre</a></li>
-                <li><a class="dropdown-item" href="{{ path('app_compte') }}">Profil</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_parameters') }}">Paramètre</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_profile') }}">Profil</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
                 <li><a class="dropdown-item" href="{{ path('app_inscription') }}">S'inscrire</a></li>
                 <li><a class="dropdown-item" href="{{ path('app_login') }}">Se connecter</a></li>
-                <li><a class="dropdown-item" href="{{ path('app_login') }}">Se déconnecter</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a></li>
             </ul>
         </div>
     </div>
@@ -130,6 +130,7 @@
     #}
 </div>
 </body>
+
 {#
 <div class="container">
     {% block body %}{% endblock %}

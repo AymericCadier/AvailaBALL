@@ -40,6 +40,11 @@ class User
     #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Session::class)]
     private Collection $sessions;
 
+    /**
+     * @ORM\Column(type="json")
+     */
+    private array $roles = [];
+
     // Ajout du champ confirmPassword avec validation
     #[Assert\EqualTo(propertyPath: 'password', message: "Le mot de passe et sa confirmation doivent correspondre.")]
     #[Assert\NotBlank]
@@ -130,6 +135,25 @@ class User
     public function setPassword(?string $password): static
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }

@@ -5,8 +5,7 @@ controllers:
     type: attribute
 
 app_logout:
-    path:
-        en: /logout
+    path: "/logout"
     methods: GET
 
     # Autres définitions de routes...

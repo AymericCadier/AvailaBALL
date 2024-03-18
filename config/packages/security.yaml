@@ -51,5 +51,11 @@ when@test:
 
         access_control:
             - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, methods: [ GET ] }
+            - { path: ^/message, roles: ROLE_USER }
+            - { path: ^/profile, roles: ROLE_USER }
+            - { path: ^/parameters, roles: ROLE_USER }
+
         # config/packages/security.yaml
+
+
 

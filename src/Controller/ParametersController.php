@@ -6,10 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CompteController extends AbstractController
+class ParametersController extends AbstractController
 {
-    #[Route("index/profile", name: "app_profile")]
-    public function profile(): Response
+    #[Route("index/parameters", name: "app_parameters")]
+    public function parameters(): Response
     {
         // Vérifie si l'utilisateur est connecté
         if (!$this->getUser()) {
@@ -17,8 +17,8 @@ class CompteController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        // Code pour afficher la page de profil
-        return $this->render('home/profile.html.twig', [
+        // Code pour afficher la page de paramètres
+        return $this->render('home/parameters.html.twig', [
             // Passer éventuellement des données à votre template Twig
         ]);
     }
