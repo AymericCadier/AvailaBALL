@@ -16,7 +16,7 @@
             <!-- Contenu à droite de la barre latérale -->
             <div>
                 <!-- Votre contenu ici -->
-                <div class="container"><br><br><br><br>
+                <div class="container">
                     <h1 class="text-center">Inscription</h1>
                     <!-- Créez le formulaire en utilisant les noms des propriétés de l'entité User -->
                     <form method="post" action="{{ path('app_inscription') }}" class="row g-3">
@@ -26,23 +26,12 @@
                         {{ form_row(form.lname, {'attr': {'class': 'form-control', 'placeholder': 'Last Name'}}) }}
                         {{ form_row(form.fname, {'attr': {'class': 'form-control', 'placeholder': 'First Name'}}) }}
                         {{ form_row(form.username, {'attr': {'class': 'form-control', 'placeholder': 'Username'}}) }}
-
-                        <-- Ajoutez des champs pour les termes et conditions -->
                         <div class="col-12">
 
-                        </div>
-
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary">S'inscrire</button>
                         </div>
 
                         {{ form_end(form) }}
                     </form>
-
-                    <h6 style="text-align: center">Vous y êtes presque...</h6>
-                    <div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar text-bg-warning" style="width: 75%">75%</div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -12,11 +12,11 @@
 <body>
 
 <div class="container">
-    <form>
+    <form form action="{{ path('app_check_login') }}" method="post">
         <h1>Connexion</h1>
-        <input type="email" class="form-control" id="email" name="_username" aria-describedby="emailHelp" placeholder="Email" required><br>
+        <label for="email"></label><input type="email" class="form-control" id="email" name="_username" aria-describedby="emailHelp" placeholder="Email" required><br>
         <input type="password" class="form-control" id="password" name="_password" placeholder="Mot de passe" required><br>
-        <input type="button" value="Connexion"><a href={{ path('app_compte') }}></a><br>
+        <input type="submit" value="Connexion"><a href={{ path('app_compte') }}></a><br>
         <a href="#">Mot de passe oublié</a>
     </form>
     <div class="drop drop-1"></div>
