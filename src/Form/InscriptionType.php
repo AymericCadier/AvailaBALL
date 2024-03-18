@@ -37,4 +37,7 @@ class InscriptionType extends AbstractType
             'data_class' => User::class,
         ]);
     }
+
+
+
 }
