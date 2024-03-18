@@ -21,13 +21,13 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    public function createUser($lname, $fname ,$username, $password, $email){
+    public function createUser($lname, $fname ,$username, $email, $password){
         $user = new User();
         $user->setLname($lname);
         $user->setFname($fname);
         $user->setUsername($username);
-        $user->setPassword($password);
         $user->setEmail($email);
+        $user->setPassword($password);
         $user->setCreatedAt($user->getCurrentDate());
         $this->_em->persist($user);
         $this->_em->flush();
@@ -46,6 +46,16 @@ class UserRepository extends ServiceEntityRepository
     public function getUser($email,$password){
         $user = $this->findOneBy(['email' => $email, 'password' => $password]);
         return $user;
+    }
+
+    public function getUserByEmailAndPassword($email, $password)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.email = :email')
+            ->andWhere('u.password = :password')
+            ->setParameters(['email' => $email, 'password' => $password])
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
     public function deleteUser($email,$password){
