@@ -17,42 +17,45 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     #[Route("/index/login", name: "app_login")]
-public function login(Request $request, UserRepository $userRepository): Response
-{
-    if ($this->getUser()) {
-        return $this->redirectToRoute('app_home');
-    }
+    public function login(Request $request, AuthenticationUtils $authenticationUtils, UserRepository $userRepository): Response
+    {
+        $user = new User();
+        $form = $this->createForm(LoginType::class, $user);
+        $form->handleRequest($request);
 
-    $user = new User();
-    $form = $this->createForm(LoginType::class, $user);
-    $form->handleRequest($request);
-    if ($form->isSubmitted() && !$form->isValid()) {
-        $errors = $form->getErrors(true, false);
-        dd($errors);
-    }
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $userRepository->getUser($user->getEmail(), $user->getPassword());
 
-    if ($form->isSubmitted()) {
-            $this->addFlash('info', 'Formulaire soumis et valide');
-
-            $email = $form->get('_email')->getData();
-            $password = $form->get('_password')->getData();
-            dd($email, $password);
-            $user = $userRepository->findOneBy(['email' => $email]);
-
-            if (!$user || !password_verify($password, $user->getPassword())) {
+            if (!$user) {
+                // Si les informations de connexion sont incorrectes, redirigez vers la page de connexion avec un message d'erreur
                 $this->addFlash('error', 'Invalid email or password.');
-            } else {
-                // Connexion réussie
+                return $this->redirectToRoute('app_home');
             }
-        } else {
-            $this->addFlash('error', 'Formulaire soumis mais invalide');
+
+            // Si la connexion est réussie, Symfony gérera automatiquement la création et la persistance du token d'authentification
+            // Vous pouvez donc simplement rediriger l'utilisateur vers la page d'accueil
+            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+            $this->get('security.token_storage')->setToken($token);
+            $this->get('session')->set('_security_main', serialize($token));
+
+            return $this->redirectToRoute('app_home');
         }
 
+        // Si l'utilisateur est déjà connecté, redirigez-le vers la page d'accueil
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
 
-    return $this->render('home/login.html.twig', [
-        'form' => $form->createView(),
-    ]);
-}
+        // Récupérer les informations d'erreur de connexion et le dernier nom d'utilisateur saisi
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('home/login.html.twig', [
+            'form' => $form->createView(),
+            'last_username' => $lastUsername,
+            'error' => $error,
+        ]);
+    }
 
 
     /*public function login(Request $request, UserRepository $userRepository): Response
