@@ -33,7 +33,7 @@ class Session
     #[ORM\JoinColumn(nullable: false)]
     private ?Playground $id_playground = null;
 
-    #[ORM\OneToMany(mappedBy: 'id_session', targetEntity: Messages::class)]
+    #[ORM\OneToMany(mappedBy: 'id_session', targetEntity: Message::class)]
     private Collection $messages;
 
     public function __construct()
@@ -114,14 +114,14 @@ class Session
     }
 
     /**
-     * @return Collection<int, Messages>
+     * @return Collection<int, Message>
      */
     public function getMessages(): Collection
     {
         return $this->messages;
     }
 
-    public function addMessage(Messages $message): static
+    public function addMessage(Message $message): static
     {
         if (!$this->messages->contains($message)) {
             $this->messages->add($message);
@@ -131,7 +131,7 @@ class Session
         return $this;
     }
 
-    public function removeMessage(Messages $message): static
+    public function removeMessage(Message $message): static
     {
         if ($this->messages->removeElement($message)) {
             // set the owning side to null (unless already changed)

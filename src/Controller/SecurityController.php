@@ -29,7 +29,7 @@ class SecurityController extends AbstractController
             if (!$user) {
                 // Si les informations de connexion sont incorrectes, redirigez vers la page de connexion avec un message d'erreur
                 $this->addFlash('error', 'Invalid email or password.');
-                return $this->redirectToRoute('app_login');
+                return $this->redirectToRoute('app_home');
             }
 
             // Si la connexion est réussie, Symfony gérera automatiquement la création et la persistance du token d'authentification
