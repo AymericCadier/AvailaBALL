@@ -16,8 +16,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route("/index/login", name: "app_login")]
-    public function login(Request $request, AuthenticationUtils $authenticationUtils, UserRepository $userRepository): Response
+    #[Route("/index/logine", name: "app_logine")]
+    public function login(Request $request, UserRepository $userRepository): Response
     {
         $user = new User();
         $form = $this->createForm(LoginType::class, $user);
@@ -47,13 +47,13 @@ class SecurityController extends AbstractController
         }
 
         // Récupérer les informations d'erreur de connexion et le dernier nom d'utilisateur saisi
-        $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
+      //  $error = $authenticationUtils->getLastAuthenticationError();
+      //  $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('home/login.html.twig', [
             'form' => $form->createView(),
-            'last_username' => $lastUsername,
-            'error' => $error,
+           // 'last_username' => $lastUsername,
+            //'error' => $error,
         ]);
     }
 

@@ -7,13 +7,19 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(type: "integer")]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -23,7 +29,7 @@ class User
     private ?string $fname = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $username = null;
+    private ?string $nickname = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $email = null;
@@ -72,12 +78,12 @@ class User
         return $this->id;
     }
 
-    public function setId(int $id): static
+    /* public function setId(int $id): static
     {
         $this->id = $id;
 
         return $this;
-    }
+    } */
 
     public function getLname(): ?string
     {
@@ -105,12 +111,24 @@ class User
 
     public function getUsername(): ?string
     {
-        return $this->username;
+        return $this->email;
     }
 
-    public function setUsername(?string $username): static
+    public function setUsername(?string $email): static
     {
-        $this->username = $username;
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(?string $nickname): static
+    {
+        $this->nickname = $nickname;
 
         return $this;
     }
@@ -213,5 +231,22 @@ class User
         }
 
         return $this;
+    }
+
+    public function eraseCredentials(): void
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+
+    public function getSalt(): ?string
+    {
+        // Si vous ne stockez pas de sel, retournez null
+        return null;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
     }
 }
