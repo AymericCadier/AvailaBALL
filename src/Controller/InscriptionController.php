@@ -50,7 +50,7 @@ class InscriptionController extends AbstractController
             return $this->render('home/index.html.twig');
         }
         // Si le formulaire n'est pas encore soumis ou n'est pas valide, afficher le formulaire
-        return $this->render('home/inscriptionA.html.twig', [
+        return $this->render('security/inscriptionB.html.twig', [
             'form' => $form->createView(),
         ]);
     }

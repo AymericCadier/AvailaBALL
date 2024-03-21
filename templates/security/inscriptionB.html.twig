@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/css/login.css') }}">
+    {% endblock %}
+</head>
+<body>
+
+<div class="container">
+    <form method="post">
+        <h1>Connexion</h1>
+        <label for="email"></label><input type="email" class="form-control" id="email" name="_username" aria-describedby="emailHelp" placeholder="Email" required><br>
+        <input type="password" class="form-control" id="password" name="_password" placeholder="Mot de passe" required><br>
+        <input type="submit" value="Connexion"><a href={{ path('app_login') }}></a><br>
+        <a href="{{ path('app_inscription') }}">Créer un compte</a><br>
+        <a href="#">Mot de passe oublié</a>
+    </form>
+    <div class="drop drop-1"></div>
+    <div class="drop1 drop-2"></div>
+    <div class="drop drop-3"></div>
+    <div class="drop1 drop-4"><a href="{{ path('app_home') }}"><img src="../images/logoo.png" width="120" height="120"></a></div>
+    <div class="drop drop-5"></div>
+</div>
+
+</body>
+</html>
