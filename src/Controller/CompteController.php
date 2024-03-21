@@ -57,4 +57,24 @@ class CompteController extends AbstractController
         ]);
     }
 
+    #[Route("/account/delete", name: "app_account_delete")]
+    public function delete(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        // Récupère l'utilisateur connecté
+        $user = $this->getUser();
+
+        // Met à jour l'attribut "deleted_at" avec la date et l'heure actuelles
+        $user->setDeletedAt(new \DateTimeImmutable());
+
+        // Enregistre les modifications en base de données
+        $entityManager->flush();
+
+        // Affiche un message de succès à l'utilisateur
+        $this->addFlash('success', 'Votre compte a été supprimé avec succès.');
+
+        // Redirige vers la page d'accueil
+        return $this->redirectToRoute('app_logout');
+    }
+
+
 }

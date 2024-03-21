@@ -6,9 +6,8 @@ security:
     providers:
         users_in_memory: { memory: null }
         app_user_provider:
-            entity:
-                class: 'App\Entity\User'
-                property: 'email'
+            id: App\Security\UserProvider
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
