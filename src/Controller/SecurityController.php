@@ -13,74 +13,48 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Http\Logout\LogoutHandlerInterface;
 
 class SecurityController extends AbstractController
 {
-    #[Route("/index/logine", name: "app_logine")]
-    public function login(Request $request, UserRepository $userRepository): Response
+    #[\Symfony\Component\Routing\Attribute\Route(path: '/login', name: 'app_login')]
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $user = new User();
-        $form = $this->createForm(LoginType::class, $user);
-        $form->handleRequest($request);
+        // if ($this->getUser()) {
+        //     return $this->redirectToRoute('target_path');
+        // }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = $userRepository->getUser($user->getEmail(), $user->getPassword());
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
 
-            if (!$user) {
-                // Si les informations de connexion sont incorrectes, redirigez vers la page de connexion avec un message d'erreur
-                $this->addFlash('error', 'Invalid email or password.');
-                return $this->redirectToRoute('app_home');
-            }
-
-            // Si la connexion est réussie, Symfony gérera automatiquement la création et la persistance du token d'authentification
-            // Vous pouvez donc simplement rediriger l'utilisateur vers la page d'accueil
-            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
-            $this->get('security.token_storage')->setToken($token);
-            $this->get('session')->set('_security_main', serialize($token));
-
-            return $this->redirectToRoute('app_home');
-        }
-
-        // Si l'utilisateur est déjà connecté, redirigez-le vers la page d'accueil
-        if ($this->getUser()) {
-            return $this->redirectToRoute('app_home');
-        }
-
-        // Récupérer les informations d'erreur de connexion et le dernier nom d'utilisateur saisi
-      //  $error = $authenticationUtils->getLastAuthenticationError();
-      //  $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('home/login.html.twig', [
-            'form' => $form->createView(),
-           // 'last_username' => $lastUsername,
-            //'error' => $error,
-        ]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-
-    /*public function login(Request $request, UserRepository $userRepository): Response
+    #[Route('index/logout', name: 'app_logout')]
+    public function logout(LogoutHandlerInterface $logoutHandler): Response
     {
-        $user = new User();
-        $form = $this->createForm(LoginType::class, $user);
-        $form->handleRequest($request);
+        // Utilisez le LogoutHandlerInterface pour gérer la déconnexion
+        $logoutHandler->logout($this->getUser());
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = $userRepository->getUserByEmailAndPassword($user->getEmail(), $user->getPassword());
+        // Redirigez l'utilisateur vers la page d'accueil ou une autre page
+        return $this->redirectToRoute('app_login');
+    }
 
-            if (!$user) {
-                // Si les informations de connexion sont incorrectes, redirigez vers la page de connexion avec un message d'erreur
-                $this->addFlash('error', 'Invalid email or password.');
-                return $this->redirectToRoute('app_login');
-            }
+    #[Route('/index/inscription', name: 'app_test_login')]
+    public function isUserLoggedIn(AuthenticationUtils $authenticationUtils)
+    {
+        $user = $this->getUser();
 
-            $this->addFlash('success', 'Connexion réussie !');
-            return $this->redirectToRoute('app_home');
+        if ($user) {
+            // L'utilisateur est connecté
+            return true;
+        } else {
+            // L'utilisateur n'est pas connecté
+            return false;
         }
-
-        return $this->render('home/login.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }*/
+    }
 
 
 
