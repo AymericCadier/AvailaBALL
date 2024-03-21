@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon compte{% endblock %}
+
+{% block body %}
+    <h1>Modifier mon compte</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.lname, {'label': 'Nom'}) }}
+    {{ form_row(form.fname, {'label': 'Prénom'}) }}
+    {{ form_row(form.nickname, {'label': 'Pseudo'}) }}
+    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    {{ form_end(form) }}
+{% endblock %}

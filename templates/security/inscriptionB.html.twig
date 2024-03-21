@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/css/inscription.css') }}">
+    {% endblock %}
+</head>
+<body>
+
+<div class="container">
+    <form method="post" action="{{ path('app_inscription') }}">
+        <h1>Inscription</h1>
+        <div>
+            <label for="lname"></label>
+            {{ form_row(form.lname, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+        </div>
+        <div>
+            <label for="fname"></label>
+            {{ form_row(form.fname, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}}) }}
+        </div>
+        <div>
+            <label for="nickname"></label>
+            {{ form_row(form.nickname, {'attr': {'class': 'form-control', 'placeholder': 'Pseudo'}}) }}
+        </div>
+        <div>
+            <label for="email"></label>
+            {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+        </div>
+
+        <label for="password"></label>
+        {{ form_row(form.password, {'attr': {'class': 'form-control', 'placeholder': 'Password'}}) }}
+
+        {{ form_row(form.submit, {'attr': {'class': 'form-end', 'placeholder': 'Password'}}) }}
+
+        {{ form_end(form) }}
+        <br>
+        {#  <a href="{{ path('app_login') }}">Vous avez déjà un compte ?</a><br> #}
+    </form>
+    <div class="drop drop-1"></div>
+    <div class="drop1 drop-2"></div>
+    <div class="drop drop-3"></div>
+    <div class="drop1 drop-4"><a href="{{ path('app_home') }}"><img src="../images/logoo.png" width="120" height="120"></a>
+    </div>
+    <div class="drop drop-5"></div>
+</div>
+
+</body>
+</html>

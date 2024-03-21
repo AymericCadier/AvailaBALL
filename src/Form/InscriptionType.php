@@ -15,11 +15,11 @@ class InscriptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('lname')
-            ->add('fname')
-            ->add('nickname')
-            ->add('email')
-            ->add('password')
+            ->add('lname', null, ['label' => false])
+            ->add('fname', null, ['label' => false])
+            ->add('nickname', null, ['label' => false])
+            ->add('email', null, ['label' => false])
+            ->add('password', null, ['label' => false])
             /*->add('confirmPassword')
             ->add('created_at')
             ->add('deleted_at') */
