@@ -6,24 +6,43 @@
     <title>Login</title>
 
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('styles/css/login.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/css/inscription.css') }}">
     {% endblock %}
 </head>
 <body>
 
 <div class="container">
     <form method="post">
-        <h1>Connexion</h1>
-        <label for="email"></label><input type="email" class="form-control" id="email" name="_username" aria-describedby="emailHelp" placeholder="Email" required><br>
-        <input type="password" class="form-control" id="password" name="_password" placeholder="Mot de passe" required><br>
-        <input type="submit" value="Connexion"><a href={{ path('app_login') }}></a><br>
-        <a href="{{ path('app_inscription') }}">Créer un compte</a><br>
-        <a href="#">Mot de passe oublié</a>
+        <h1>Inscription</h1>
+        <div>
+            <label for="lname"></label>
+            <input type="text" id="lname" name="lname" class="form-control" placeholder="Nom" required>
+        </div>
+        <div>
+            <label for="fname"></label>
+            <input type="text" id="fname" name="fname" class="form-control" placeholder="Prénom" required>
+        </div>
+        <div>
+            <label for="nickname"></label>
+            <input type="text" id="nickname" name="nickname" class="form-control" placeholder="Pseudo" required>
+        </div>
+        <div>
+            <label for="email"></label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+        </div>
+        <div>
+            <label for="password"></label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Mot de Passe"
+                   required>
+        </div>
+        <input type="submit" value="S'inscrire" class="btn btn-primary" ><br>
+        <a href="{{ path('app_login') }}">Vous avez déjà un compte ?</a><br>
     </form>
     <div class="drop drop-1"></div>
     <div class="drop1 drop-2"></div>
     <div class="drop drop-3"></div>
-    <div class="drop1 drop-4"><a href="{{ path('app_home') }}"><img src="../images/logoo.png" width="120" height="120"></a></div>
+    <div class="drop1 drop-4"><a href="{{ path('app_home') }}"><img src="../images/logoo.png" width="120" height="120"></a>
+    </div>
     <div class="drop drop-5"></div>
 </div>
 
