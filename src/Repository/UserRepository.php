@@ -25,7 +25,7 @@ class UserRepository extends ServiceEntityRepository
         $user = new User();
         $user->setLname($lname);
         $user->setFname($fname);
-        $user->setUsername($username);
+        $user->setNickname($username);
         $user->setEmail($email);
         $user->setPassword($password);
         $user->setCreatedAt($user->getCurrentDate());
@@ -68,7 +68,7 @@ class UserRepository extends ServiceEntityRepository
         $user = $this->find($id);
         $user->setLname($lname);
         $user->setFname($fname);
-        $user->setUsername($username);
+        $user->setNickname($username);
         $user->setPassword($password);
         $user->setEmail($email);
         $this->_em->persist($user);

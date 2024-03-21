@@ -13,17 +13,40 @@
 
 <div class="container">
     <form method="post">
+
+
         <h1>Connexion</h1>
-        <label for="email"></label><input type="email" class="form-control" id="email" name="_username" aria-describedby="emailHelp" placeholder="Email" required><br>
-        <input type="password" class="form-control" id="password" name="_password" placeholder="Mot de passe" required><br>
-        <input type="submit" value="Connexion"><a href={{ path('app_login') }}></a><br>
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+        <label for="inputEmail"></label>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+               autocomplete="email" required autofocus>
+        <br>
+        <label for="inputPassword"></label>
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password"
+               required>
+        <br>
+        <button class="btn btn-lg btn-primary" type="submit">
+            Sign in
+        </button>
+        <br>
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
         <a href="{{ path('app_inscription') }}">Créer un compte</a><br>
         <a href="#">Mot de passe oublié</a>
     </form>
     <div class="drop drop-1"></div>
     <div class="drop1 drop-2"></div>
     <div class="drop drop-3"></div>
-    <div class="drop1 drop-4"><a href="{{ path('app_home') }}"><img src="../images/logoo.png" width="120" height="120"></a></div>
+    <div class="drop1 drop-4"><a href="{{ path('app_home') }}"><img src="../images/logoo.png" width="120" height="120"></a>
+    </div>
     <div class="drop drop-5"></div>
 </div>
 
