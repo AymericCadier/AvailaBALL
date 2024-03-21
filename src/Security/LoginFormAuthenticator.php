@@ -15,6 +15,9 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordC
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\SecurityRequestAttributes;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\User;
+use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 
 class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 {
@@ -22,13 +25,32 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public const LOGIN_ROUTE = 'app_login';
 
-    public function __construct(private UrlGeneratorInterface $urlGenerator)
+    /*public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
+    } */
+    private $entityManager;
+
+    private $urlGenerator;
+
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator)
+    {
+        $this->entityManager = $entityManager;
+        $this->urlGenerator = $urlGenerator;
     }
+
+
 
     public function authenticate(Request $request): Passport
     {
         $email = $request->request->get('email', '');
+
+        // Vérifiez si l'utilisateur a un compte supprimé
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email, 'deleted_at' => null]);
+
+        if (!$user) {
+            // Si l'utilisateur n'existe pas ou a un compte supprimé, lancez une exception d'échec d'authentification
+            throw new CustomUserMessageAuthenticationException('Compte inexistant ou supprimé.');
+        }
 
         $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $email);
 
@@ -41,6 +63,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             ]
         );
     }
+
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {

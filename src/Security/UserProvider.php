@@ -48,17 +48,18 @@ return User::class === $class;
         $user = $this->entityManager->createQuery('
         SELECT u
         FROM App\Entity\User u
-        WHERE u.email = :email AND u.deleted_at IS NULL
+        WHERE u.id = :id AND u.deleted_at IS NULL
     ')
-            ->setParameter('email', $identifier)
+            ->setParameter('id', $identifier)
             ->getOneOrNullResult();
 
-        if (null === $user) {
+        if (null === $user || $user->getDeletedAt() !== null) {
             throw new UserNotFoundException(sprintf('User with ID "%s" not found.', $identifier));
         }
 
         return $user;
     }
+
 
 
 }
