@@ -7,10 +7,7 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('styles/css/maps.css') }}">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-              integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-              crossorigin=""/>
+        <!-- <link rel="stylesheet" href="{{ asset('styles/css/maps.css') }}"> -->
     {% endblock %}
 
 
@@ -23,11 +20,11 @@
 
         <div class="flex-grow-1">
             <div class="texte">
-                <h1>MAPS</h1>
+                <h1>MAPS</h1><br><br>
             </div>
 
             <div id="map"></div>
-            <body>
+
             <iframe
                     width="600"
                     height="450"
@@ -41,107 +38,10 @@
 
             <!-- Bootstrap Bundle with Popper -->
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
-                <!-- Make sure you put this AFTER Leaflet's CSS -->
-                <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-                        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-                        crossorigin="">
-
-                </script>
-            </body>
 
         </div>
 
     </div>
-    {#
-    <br>
-    <br>
-    <br>
-    <br>
-    <!-- Contenu de la page d'accueil -->
-    <div class="container mt-3">
-        <br>
-        <br>
-        <h1 col>Bienvenue sur l'application de localisation des terrains de sport</h1><br>
-
-    </div><br>
-
-    <!-- Première partie -->
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card h-100">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>FOOTBALL</title><rect width="100%" height="100%" fill=""></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">FOOTBALL</text></svg>
-                <div class="card-body">
-                    <img src="C:\wamp64\www\ProjetINF8\public\images\foot.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="card-footer">
-                    <small class="text-body-secondary">Voir les terrains</small>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>BASKETBALL</title><rect width="100%" height="100%" fill=""></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">BASKETBALL</text></svg>
-                <div class="card-body">
-                    <img src="images/basket.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="card-footer">
-                    <small class="text-body-secondary">Voir les terrains</small>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>RUGBY</title><rect width="100%" height="100%" fill=""></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">RUGBY</text></svg>
-                <div class="card-body">
-                    <img src="images/rugby.jpeg" class="d-block w-100" alt="...">
-                </div>
-                <div class="card-footer">
-                    <small class="text-body-secondary">Voir les terrains</small>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
-    <!-- Fin première partie -->
-
-    <!-- Partie centrale -->
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <h3 style="text-align: center; background-color: black; color: white; background-width: 20px;">NOS EVENEMENTS </h3>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/evefoot.jpeg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="images/evebasket.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="images/everugby.jpg" class="d-block w-100" alt="...">
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
-    <!-- Fin partie centrale -->
-
-    <!-- Deuxieme partie -->
-
-    <div class="card text-center">
-        <div class="card-header">
-            ACTUALITES
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="{{ path('app_evenements') }}" class="btn btn-primary">Consulter nos évènements</a>
-        </div>
-        <div class="card-footer text-body-secondary">
-            2 days ago
-        </div>
-    </div>
-
-    <!-- Fin deuxieme partie -->
-    #}
 {% endblock %}
 </body>
 </html>
