@@ -61,7 +61,8 @@ a:active {
     text-shadow: none;
 }
 
-input {
+input,
+button{
     background: transparent;
     border: none;
     border-left: 1px solid rgba(255, 255, 255, .3);
@@ -87,8 +88,9 @@ input[type="password"]:focus{
     box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
 }
 
-input[type="button"] {
+button {
     margin-top: 10px;
+    margin-bottom: 5px;
     width: 150px;
     font-size: 1rem;
     cursor: pointer;
