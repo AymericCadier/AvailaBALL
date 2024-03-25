@@ -8,6 +8,13 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
         <!-- <link rel="stylesheet" href="{{ asset('styles/css/maps.css') }}"> -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+              integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+              crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+                integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+                crossorigin=""></script>
+
     {% endblock %}
 
 
@@ -25,6 +32,7 @@
 
             <div id="map"></div>
 
+            <!--
             <iframe
                     width="600"
                     height="450"
@@ -34,10 +42,26 @@
                     src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBaQqX1BORIFSqw2czUAGiMSxmocWTMapM&q=terrains+basket+in+Paris"
                     allowfullscreen>
             </iframe>
+            -->
 
 
             <!-- Bootstrap Bundle with Popper -->
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+
+            <script>
+                // Initialisez la carte Leaflet
+                var map = L.map('map').setView([48.8566, 2.3522], 13);
+
+                // Ajoutez une couche de tuile OpenStreetMap à la carte
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                // Ajoutez un marqueur à la carte
+                L.marker([48.8566, 2.3522]).addTo(map)
+                    .bindPopup('Paris')
+                    .openPopup();
+            </script>
 
         </div>
 

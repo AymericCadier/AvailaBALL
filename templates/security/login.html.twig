@@ -40,7 +40,7 @@
                value="{{ csrf_token('authenticate') }}"
         >
         <a href="{{ path('app_inscription') }}">Créer un compte</a><br>
-        <a href="#">Mot de passe oublié</a>
+        <a href="{{ path('app_reinitMdp')}}">Mot de passe oublié</a>
     </form>
     <div class="drop drop-1"></div>
     <div class="drop1 drop-2"></div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>REINITIALISER MOT DE PASSE</title>
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/css/login.css') }}">
@@ -13,12 +13,10 @@
 
 <div class="container">
     <form method="post">
-        <h1>Connexion</h1>
+        <h1>REINITIALISER MOT DE PASSE</h1>
+        <p>Entrez vos email</p>
         <label for="email"></label><input type="email" class="form-control" id="email" name="_username" aria-describedby="emailHelp" placeholder="Email" required><br>
-        <input type="password" class="form-control" id="password" name="_password" placeholder="Mot de passe" required><br>
         <input type="submit" value="Connexion"><a href={{ path('app_login') }}></a><br>
-        <a href="{{ path('app_inscription') }}">Créer un compte</a><br>
-        <a href="{{ path('app_reinitMdp')}}">Mot de passe oublié</a>
     </form>
     <div class="drop drop-1"></div>
     <div class="drop1 drop-2"></div>
