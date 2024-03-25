@@ -17,6 +17,9 @@ class Event
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $name = null;
 
+    #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
+    private ?string $valid = null;
+
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
 
@@ -114,6 +117,18 @@ class Event
     public function setIdPlayground(?Playground $id_playground): static
     {
         $this->id_playground = $id_playground;
+
+        return $this;
+    }
+
+    public function getValid(): ?string
+    {
+        return $this->valid;
+    }
+
+    public function setValid(?string $valid): static
+    {
+        $this->valid = $valid;
 
         return $this;
     }
