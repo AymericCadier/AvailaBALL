@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Form\AbstractType;
@@ -22,11 +23,16 @@ class InscriptionType extends AbstractType
             ->add('password', null, ['label' => false])
             /*->add('confirmPassword')
             ->add('created_at')
-            ->add('deleted_at') */
+            ->add('deleted_at')
+            ->add('roles', HiddenType::class, [
+                'data' => ['ROLE_USER'],
+            ]) */
+
             ->add('submit', SubmitType::class, [
                 'label' => 'S\'inscrire',
                 'attr' => ['class' => 'btn btn-primary'],
             ]);
+
 
         ;
     }

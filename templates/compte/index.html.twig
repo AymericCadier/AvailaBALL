@@ -21,9 +21,9 @@
                 <p>Nom d'utilisateur : {{ app.user.nickname }}</p>
                 <p>Email : {{ app.user.email }}</p>
                 <p>Date de création : {{ app.user.createdAt|date('Y-m-d H:i:s') }}</p>
-                {% if app.user.roles is not empty %}
+               {#  {% if app.user.roles is not empty %}
                     <p>Rôles : {{ app.user.roles|join(', ') }}</p>
-                {% endif %}
+                {% endif %}  #}
             </div>
         {% endif %}
         <li><a class="dropdown-item" href="{{ path('app_account_update') }}">Modifier le compte</a></li>

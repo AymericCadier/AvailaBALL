@@ -34,6 +34,7 @@ class InscriptionController extends AbstractController
                     plainPassword: $user->getPassword()
                 )
             );
+            $user->setRoles(['ROLE_USER']);
             $userRepository->createUser(
                 $user->getLname(),
                 $user->getFname(),
