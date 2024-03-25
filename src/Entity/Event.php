@@ -32,6 +32,8 @@ class Event
     #[ORM\ManyToOne(inversedBy: 'events')]
     private ?Playground $id_playground = null;
 
+
+
     public function getId(): ?int
     {
         return $this->id;

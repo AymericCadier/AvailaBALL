@@ -18,10 +18,8 @@ class EventType extends AbstractType
             ->add('date')
             ->add('duration')
             ->add('type')
-            ->add('created_at')
             ->add('id_playground', EntityType::class, [
-                'class' => Playground::class,
-'choice_label' => 'id',
+                'class' => Playground::class, 'choice_label' => 'id',
             ])
         ;
     }
