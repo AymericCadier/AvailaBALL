@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class EvenementsController extends AbstractController
 {
-    #[Route('/index/evenements', name: 'app_evenements')]
+    #[Route('/index/evenements', name: 'app_create')]
 
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -36,7 +36,7 @@ class EvenementsController extends AbstractController
             $this->addFlash('success', 'Votre événement a été créé avec succès.');
 
             // Redirige vers une autre page, par exemple la page d'accueil
-            return $this->redirectToRoute('app_evenements');
+            return $this->redirectToRoute('app_create');
         }
 
         // Si le formulaire n'a pas été soumis ou n'est pas valide, affiche le formulaire à nouveau
@@ -44,4 +44,21 @@ class EvenementsController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/index/evenements/liste', name: 'app_event_list')]
+    public function eventList(EntityManagerInterface $entityManager): Response
+    {
+        // Récupère le repository des événements
+        $eventRepository = $entityManager->getRepository(Event::class);
+
+        // Appelle la méthode listValidEvents() pour récupérer les événements valides
+        $events = $eventRepository->listValidEvents();
+
+        // Rend la page Twig avec la liste des événements valides
+        return $this->render('evenements/event_list.html.twig', [
+            'events' => $events,
+        ]);
+    }
+
+
 }

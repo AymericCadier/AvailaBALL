@@ -57,6 +57,23 @@ class EventRepository extends ServiceEntityRepository
         ;
     }
 
+    public function listValidEvents(){
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.valid=1')
+            ->orderBy('e.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function listUnseenEvents(): array
+    {
+        return $this->createQueryBuilder('e')
+            ->where('e.valid IS NULL')
+            ->orderBy('e.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 
 
 

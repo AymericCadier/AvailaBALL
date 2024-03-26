@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Événements{% endblock %}
+
+{% block body %}
+    <h1>Liste des Événements</h1>
+
+    <ul>
+        {% for event in events %}
+            <li>
+
+                Nom : {{ event.name }}
+                <br>
+                Date : {{ event.date|date('d/m/Y H:i') }}
+                <br>
+                Durée : {{ event.duration }}
+                <br>
+                Type : {{ event.type }}
+                <br>
+                Créé le : {{ event.createdAt|date('d/m/Y H:i') }}
+                <br>
+
+                {% if event.idPlayground %}
+                    Terrain : {{ event.idPlayground.name }}
+                    <br>
+                {% endif %}
+                Valid : {% if event.valid %}Oui{% else %}Non{% endif %}
+                <hr>
+            </li>
+
+        {% else %}
+            <li>Aucun événement trouvé.</li>
+        {% endfor %}
+
+    </ul>
+{% endblock %}
