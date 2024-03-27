@@ -20,6 +20,7 @@
                         <p>Date de création : {{ app.user.createdAt|date('Y-m-d H:i:s') }}</p>
                         <p>Rôles : {{ app.user.roles|join(', ') }}</p>
                     </div>
+                    <a class="dropdown-item" href="{{ path('app_unseen_events') }}">Valider les évènements</a>
                 {% endif %}
             </div>
         </div>
