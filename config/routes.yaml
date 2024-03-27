@@ -8,6 +8,16 @@ app_logout:
     path: "/logout"
     methods: GET
 
+app_validate_event_validate:
+    path: /index/validate_event/{id}
+    methods: [GET, POST]
+    controller: App\Controller\AdminController::validateEvent
+
+app_validate_event_refuse:
+    path: /index/refuse_event/{id}
+    methods: [GET, POST]
+    controller: App\Controller\AdminController::refuseEvent
+
     # Autres définitions de routes...
 
 

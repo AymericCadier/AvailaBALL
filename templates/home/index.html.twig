@@ -7,84 +7,123 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
     {% endblock %}
     
 
 </head>
-<body>
+<body style="background-color: #16191c; color: white">
 
 {% block body %}
     <div class="d-flex flex-row">
         {% include 'base.html.twig' %}
 
         <div class="flex-grow-1">
-            <div class="texte">
+
+            <div style="background: url('images/Banniere.jpg') center center no-repeat; background-size: cover; height: 50vh;">
+                <section class="text">
+                    <br>
+                    <br>
+                    <br>
+                    <h1>Availaball</h1>
+                    <p>Basket/Foot</p>
+                    <p>Ball</p>
+
+                </section>
+            </div>
+            <br>
+            <br>
+            <div class="titre">
                 <h1>Accueil</h1>
                 <p>Bienvenue sur l'application de localisation des terrains de sport</p>
             </div>
-            <body>
 
-            <!-- Ebook Intro Section -->
+            <br>
+            <br>
             <div class="container section-padding">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h2 class="heading-section">Welcome to Smallpdf</h2>
-                        <p>Digital Documents Made Easy</p>
+
+                        <img src="images/Ant.png" alt="Basket" class="img-fluid">
+                    </div>
+                    <div class="col-lg-6" style="background-color: #212529">
+                        <br>
+                        <br>
+                        <br>
+                        <h2 class="heading-section">Basket-ball</h2>
+                        <p>
+                            La passion du basketball vous anime, vous vagabondez dans Paris, ballon en main, à la recherche d'un terrain libre. Chaque coin de rue pourrait être l'arène de vos exploits, mais la réalité est souvent moins clémente : tous semblent occupés ou hors d'accès. Cette quête du terrain parfait devient alors un jeu en soi, teinté d'espoir et de détermination.</p>
+                        <button class="btn btn-primary">Voir les terrains</button>
+                    </div>
+                </div>
+                <br><br><br><br>
+                <div class="row">
+                    <div class="col-lg-6" style="background-color: #212529">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <h2 class="heading-section">Football</h2>
+                        <p>
+                            Le football est un sport qui se joue à 11 contre 11, avec un ballon rond. Le but du jeu est de marquer des buts en faisant passer le ballon dans les buts adverses. Le football est un sport collectif qui demande une grande cohésion d'équipe et une bonne condition physique. Il est très populaire dans le monde entier et est souvent considéré comme le sport le plus populaire au monde.</p>
+                        <button class="btn btn-primary">Voir les terrains</button>
                     </div>
                     <div class="col-lg-6">
-                        <h2 class="heading-section">About The Book</h2>
-                        <p>Credit goes to image creators. This is an ebook landing page template using Bootstrap 5 CSS layout.</p>
+                        <img src="images/Sonn.png" alt="Football" class="img-fluid">
                     </div>
-                </div>
             </div>
+            <br>
+            <br>
+            <br>
+            <br><br><br>
+                <h1 align="center">Terrains</h1>
+                <p align="center">Voici quelque terrains coup de coeur de ce mois ci:</p>
+                <div class="wrapper">
 
-            <!-- Book Preview Section -->
-            <div class="book-section section-padding">
-                <div class="container">
-                    <h3 class="heading-section">What's inside?</h3>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <!-- Table of Contents -->
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action">Introduction</a>
-                                <a href="#" class="list-group-item list-group-item-action">Chapter 1: Win back your time</a>
-                                <a href="#" class="list-group-item list-group-item-action">Chapter 2: Work less, do more</a>
-                                <a href="#" class="list-group-item list-group-item-action">Chapter 3: Delegate</a>
-                                <a href="#" class="list-group-item list-group-item-action">Chapter 4: Habits</a>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <h4>Introducing ebook</h4>
-                            <p>This ebook landing page is good to use for any purpose. The layout is based on Bootstrap 5 CSS framework.</p>
-                            <blockquote class="blockquote">
-                                <p class="mb-0">Lorem Ipsum dolor sit amet, consectetur adipiscing kengan omeg kohm tokito</p>
-                            </blockquote>
-                        </div>
-                    </div>
+                    <i id="left" class="fa-solid fa-angle-left"></i>
+                    <ul class="carousel">
+                        <li class="card">
+                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
+                            <h2>Blanche Pearson</h2>
+                            <span>Sales Manager</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
+                            <h2>Joenas Brauers</h2>
+                            <span>Web Developer</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
+                            <h2>Lariach French</h2>
+                            <span>Online Teacher</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
+                            <h2>James Khosravi</h2>
+                            <span>Freelancer</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
+                            <h2>Kristina Zasiadko</h2>
+                            <span>Bank Manager</span>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
+                            <h2>Donald Horton</h2>
+                            <span>App Designer</span>
+                        </li>
+                    </ul>
+                    <i id="right" class="fa-solid fa-angle-right"></i>
                 </div>
-            </div>
 
-            <!-- Author Section -->
-            <div class="author-section section-padding">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4 d-flex justify-content-center">
-                            <img src="path-to-author-image.jpg" alt="Author" class="author-img img-fluid">
-                        </div>
-                        <div class="col-lg-8">
-                            <h4>Meet Author Prof. Sophia</h4>
-                            <p>This is an ebook landing page template with Bootstrap 5 CSS framework. It is easy to customize with the use of Bootstrap CSS classes.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Credits Section -->
-            <div class="credits-section">
-                <div class="container">
-                    <p>When you need free HTML CSS templates, please visit TemplateMo website which provides a variety of templates.</p>
-                </div>
-            </div>
+
+
+                    <!-- Credits Section -->
+
 
             <!-- Bootstrap Bundle with Popper -->
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>

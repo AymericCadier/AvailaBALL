@@ -1,0 +1,27 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'évènements{% endblock %}
+
+{% block body %}
+    <h1>Créer votre évènement</h1>
+
+    {{ form_start(form) }}
+    <div>
+        {{ form_row(form.name,{'label': 'Nom'}) }}
+    </div>
+    <div>
+        {{ form_row(form.date,{'label': 'Date'}) }}
+    </div>
+    <div>
+        {{ form_row(form.duration,{'label': 'Duree'}) }}
+    </div>
+    <div>
+        {{ form_row(form.type,{'label': 'Type'}) }}
+    </div>
+    <div>
+        {{ form_row(form.id_playground,{'label': 'ID PlayGround'}) }}
+    </div>
+    <button type="submit">Créer</button>
+    {{ form_end(form) }}
+{% endblock %}

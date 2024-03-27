@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Événements non validés{% endblock %}
+
+{% block body %}
+    <h1>Événements non validés</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Date</th>
+            <th>Durée</th>
+            <th>Type</th>
+            <th>Terrain</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td>{{ event.name }}</td>
+                <td>{{ event.date|date('d/m/Y H:i') }}</td>
+                <td>{{ event.duration }}</td>
+                <td>{{ event.type }}</td>
+                {# <td>{{ event.idPlayground.name }}</td> #}
+                <td>
+                <td>
+                    <a href="{{ path('app_validate_event', {'id': event.id}) }}">
+                        <button class="btn btn-success">Valider</button>
+                    </a>
+                    <a href="{{ path('app_refuse_event', {'id': event.id}) }}">
+                        <button class="btn btn-danger">Refuser</button>
+                    </a>
+                </td>
+
+
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun événement non validé.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

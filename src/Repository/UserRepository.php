@@ -23,6 +23,7 @@ class UserRepository extends ServiceEntityRepository
 
     public function createUser($lname, $fname ,$username, $email, $password){
         $user = new User();
+        $user->setRoles(['ROLE_USER']);
         $user->setLname($lname);
         $user->setFname($fname);
         $user->setNickname($username);

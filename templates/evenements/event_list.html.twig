@@ -31,9 +31,6 @@
         {% else %}
             <li>Aucun événement trouvé.</li>
         {% endfor %}
-        {% if app.user %}
-        <li><a class="dropdown-item" href="{{ path('app_create_evenements') }}">Créer un évènement !</a></li>
-        {% endif %}
 
     </ul>
 {% endblock %}
