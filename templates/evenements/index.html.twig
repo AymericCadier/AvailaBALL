@@ -1,27 +1,39 @@
-
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Liste des Événements{% endblock %}
 
 {% block body %}
-    <h1>Inscription</h1>
+    <h1>Liste des Événements</h1>
 
-    {{ form_start(form) }}
-    <div>
-        {{ form_row(form.name,{'label': 'Nom'}) }}
-    </div>
-    <div>
-        {{ form_row(form.date,{'label': 'Date'}) }}
-    </div>
-    <div>
-        {{ form_row(form.duration,{'label': 'Duree'}) }}
-    </div>
-    <div>
-        {{ form_row(form.type,{'label': 'Type'}) }}
-    </div>
-    <div>
-        {{ form_row(form.id_playground,{'label': 'ID PlayGround'}) }}
-    </div>
-    <button type="submit">S'inscrire</button>
-    {{ form_end(form) }}
+    <ul>
+        {% for event in events %}
+            <li>
+
+                Nom : {{ event.name }}
+                <br>
+                Date : {{ event.date|date('d/m/Y H:i') }}
+                <br>
+                Durée : {{ event.duration }}
+                <br>
+                Type : {{ event.type }}
+                <br>
+                Créé le : {{ event.createdAt|date('d/m/Y H:i') }}
+                <br>
+
+                {% if event.idPlayground %}
+                    Terrain : {{ event.idPlayground.name }}
+                    <br>
+                {% endif %}
+                Valid : {% if event.valid %}Oui{% else %}Non{% endif %}
+                <hr>
+            </li>
+
+        {% else %}
+            <li>Aucun événement trouvé.</li>
+        {% endfor %}
+        {% if app.user %}
+        <li><a class="dropdown-item" href="{{ path('app_create_evenements') }}">Créer un évènement !</a></li>
+        {% endif %}
+
+    </ul>
 {% endblock %}

@@ -12,8 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class EvenementsController extends AbstractController
 {
-    #[Route('/index/evenements', name: 'app_create')]
-
+    #[Route('/index/create_evenements', name: 'app_create_evenements')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
         // Crée une nouvelle instance de l'entité Event
@@ -29,6 +28,11 @@ class EvenementsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // Enregistre les données de l'événement en base de données
             $event->setCreatedAt(new \DateTimeImmutable());
+            if ($this->isGranted('ROLE_ADMIN')) {
+                $event->setValid(true);
+            } else {
+                $event->setValid(null);
+            }
             $entityManager->persist($event);
             $entityManager->flush();
 
@@ -36,11 +40,11 @@ class EvenementsController extends AbstractController
             $this->addFlash('success', 'Votre événement a été créé avec succès.');
 
             // Redirige vers une autre page, par exemple la page d'accueil
-            return $this->redirectToRoute('app_create');
+            return $this->redirectToRoute('app_event_list');
         }
 
         // Si le formulaire n'a pas été soumis ou n'est pas valide, affiche le formulaire à nouveau
-        return $this->render('evenements/index.html.twig', [
+        return $this->render('evenements/create.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -55,7 +59,7 @@ class EvenementsController extends AbstractController
         $events = $eventRepository->listValidEvents();
 
         // Rend la page Twig avec la liste des événements valides
-        return $this->render('evenements/event_list.html.twig', [
+        return $this->render('evenements/index.html.twig', [
             'events' => $events,
         ]);
     }
