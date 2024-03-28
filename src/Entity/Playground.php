@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PlaygroundRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PlaygroundRepository::class)]
@@ -23,6 +24,8 @@ class Playground
 
     #[ORM\OneToMany(mappedBy: 'id_playground', targetEntity: Session::class)]
     private Collection $sessions;
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $name = null;
 
     public function __construct()
     {
@@ -50,6 +53,18 @@ class Playground
     public function setNote(?float $note): static
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    public function getName(): ?float
+    {
+        return $this->name;
+    }
+
+    public function setName(?float $name): static
+    {
+        $this->note = $name;
 
         return $this;
     }

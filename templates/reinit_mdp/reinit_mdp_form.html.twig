@@ -12,11 +12,11 @@
 <body>
 
 <div class="container">
-    <form method="post">
+    <form method="post" action="{{ path('app_reinitMdp')}}">
         <h1>REINITIALISER MOT DE PASSE</h1>
-        <p>Entrez vos email</p>
-        <label for="email"></label><input type="email" class="form-control" id="email" name="_username" aria-describedby="emailHelp" placeholder="Email" required><br>
-        <input type="submit" value="Connexion"><a href={{ path('app_login') }}></a><br>
+        <p>Entrez votre email</p>
+        <label for="email"></label><input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Email" required><br>
+        <input type="submit" value="Vérifier" name="submit"><a href={{ path('app_reinitMdp') }}></a><br>
     </form>
     <div class="drop drop-1"></div>
     <div class="drop1 drop-2"></div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REINITIALISER MOT DE PASSE</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/css/login.css') }}">
+    {% endblock %}
+</head>
+<body>
+
+<div class="container">
+    <h1>REINITIALISER MOT DE PASSE</h1>
+    <p>Votre nouveau mot de passe a été envoyé.</p>
+    <a href="{{ path('app_login') }}" class="button">Retour à la connexion</a>
+    <div class="drop drop-1"></div>
+    <div class="drop1 drop-2"></div>
+    <div class="drop drop-3"></div>
+    <div class="drop1 drop-4"><a href="{{ path('app_home') }}"><img src="../images/logoo.png" width="120" height="120"></a></div>
+    <div class="drop drop-5"></div>
+</div>
+
+</body>
+</html>

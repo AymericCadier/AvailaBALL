@@ -26,23 +26,36 @@
         {% include 'base.html.twig' %}
 
         <div class="flex-grow-1">
+
             <div class="texte">
                 <h1>MAPS</h1><br><br>
             </div>
 
-            <div id="map"></div>
+            <div id="map">
 
-            <!--
-            <iframe
-                    width="600"
-                    height="450"
-                    frameborder="0" style="border:0"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBaQqX1BORIFSqw2czUAGiMSxmocWTMapM&q=terrains+basket+in+Paris"
-                    allowfullscreen>
-            </iframe>
-            -->
+                <iframe
+                        width="600"
+                        height="450"
+                        frameborder="0" style="border:0"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBaQqX1BORIFSqw2czUAGiMSxmocWTMapM&q=terrains+basket+in+Paris"
+                        allowfullscreen>
+                </iframe>
+            </div>
+
+            <select id="terrainSelect" onchange="updateButtons()">
+                <option value="">Choisissez un terrain</option>
+                <option value="terrain1">Terrain 1</option>
+                <option value="terrain2">Terrain 2</option>
+                <option value="terrain3">Terrain 3</option>
+            </select>
+
+            <div id="buttonsDiv" style="display: none;">
+                <button onclick="notifyStatus(true)">J'y suis</button>
+                <button onclick="notifyStatus(false)">Je n'y suis plus</button>
+            </div>
+        </div>
 
 
             <!-- Bootstrap Bundle with Popper -->
@@ -51,6 +64,8 @@
             <script>
                 // Initialisez la carte Leaflet
                 var map = L.map('map').setView([48.8566, 2.3522], 13);
+                map1 = L.map('map').setView([48.8576, 2.3542], 13);
+                var marker = L.marker([48.8566, 2.3522]).addTo(map);
 
                 // Ajoutez une couche de tuile OpenStreetMap à la carte
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -61,9 +76,54 @@
                 L.marker([48.8566, 2.3522]).addTo(map)
                     .bindPopup('Paris')
                     .openPopup();
+                var circle = L.circle([48.8566, 2.3522], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5,
+                    radius: 500
+                }).addTo(map);
             </script>
 
-        </div>
+        <script>
+            function updateButtons() {
+                var selectElement = document.getElementById("terrainSelect");
+                var buttonsDiv = document.getElementById("buttonsDiv");
+
+                // Afficher ou masquer les boutons en fonction du choix sélectionné
+                if (selectElement.value !== "") {
+                    buttonsDiv.style.display = "block";
+                } else {
+                    buttonsDiv.style.display = "none";
+                }
+            }
+
+            function notifyStatus(present) {
+                var selectElement = document.getElementById("terrainSelect");
+                var selectedTerrain = selectElement.value;
+
+                // Envoyer le choix et le statut à votre backend (par exemple, via une requête AJAX)
+
+                // Exemple de requête AJAX fictive avec fetch()
+                fetch('/update-status', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ terrain: selectedTerrain, present: present })
+                })
+                    .then(response => {
+                        // Gérer la réponse du serveur
+                        if (response.ok) {
+                            console.log("Statut mis à jour avec succès !");
+                        } else {
+                            console.error("Erreur lors de la mise à jour du statut !");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Erreur lors de la communication avec le serveur :", error);
+                    });
+            }
+        </script>
 
     </div>
 {% endblock %}
