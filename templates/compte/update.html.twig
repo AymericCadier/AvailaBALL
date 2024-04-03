@@ -1,19 +1,38 @@
-{# {% extends 'base.html.twig' %}  #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
 
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/compte/profil.css') }}">
+    {% endblock %}
+
+</head>
+<body style="background-color: #16191c; color: white">
 
 {% block body %}
-<div class="d-flex flex-row">
-    {% include 'base.html.twig' %}
+    <div class="d-flex flex-row">
+        {% include 'base.html.twig' %}
 
-    <div class="flex-grow-1">
-    <h1>Modifier mon compte</h1>
+        <div class="flex-grow-1">
 
-    {{ form_start(form) }}
-    {{ form_row(form.lname, {'label': 'Nom'}) }}
-    {{ form_row(form.fname, {'label': 'Prénom'}) }}
-    {{ form_row(form.nickname, {'label': 'Pseudo'}) }}
-    <button type="submit" class="btn btn-primary">Mettre à jour</button>
-    {{ form_end(form) }}
+
+            {% if app.user %}
+                <div>
+                    <h1>Modifier mon compte</h1>
+                    <p>{{ form_start(form) }}</p>
+                    <p>{{ form_row(form.lname, {'label': 'Nom'}) }}</p>
+                    <p>{{ form_row(form.fname, {'label': 'Prénom'}) }}</p>
+                    <p>{{ form_row(form.nickname, {'label': 'Pseudo'}) }}</p>
+                </div>
+            {% endif %}
+            <li>
+                <button type="submit" class="btn btn-primary">Mettre à jour</button>
+            </li>
+            {{ form_end(form) }}
+        </div>
     </div>
-</div>
+
 {% endblock %}
