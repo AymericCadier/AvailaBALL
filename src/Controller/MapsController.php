@@ -11,7 +11,7 @@ class MapsController extends AbstractController
     #[Route('index/maps', name: 'app_maps')]
     public function index(): Response
     {
-        return $this->render('home/maps.html.twig', [
+        return $this->render('maps/index.html.twig', [
             'controller_name' => 'MapsController',
         ]);
     }
