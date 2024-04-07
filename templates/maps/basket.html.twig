@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="d-flex flex-row">
+
+
+        <div class="flex-grow-1">
+
+            <div class="texte">
+                <h1>MAPS</h1><br><br>
+            </div>
+
+            <div id="map">
+
+                <iframe
+                        width="600"
+                        height="450"
+                        frameborder="0" style="border:0"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBaQqX1BORIFSqw2czUAGiMSxmocWTMapM&q=terrains+basket+in+Paris"
+                        allowfullscreen>
+                </iframe>
+            </div>
+
+            <select id="terrainSelect" onchange="updateButtons()">
+                <option value="">Choisissez un terrain</option>
+                {% for terrain in terrains %}
+                    <option value="{{ terrain.id }}">{{ terrain.name }}</option>
+                {% endfor %}
+            </select>
+
+            <div id="buttonsDiv" style="display: none;">
+                <form id="createSessionForm" method="POST" action="{{ path('app_session_create') }}">
+                    <input type="hidden" id="selectedTerrain" name="terrain_id">
+                    <button type="submit">J'y suis</button>
+                </form>
+                <button onclick="notifyStatus(false)">Je n'y suis plus</button>
+            </div>
+        </div>
+
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            function updateButtons() {
+                var selectElement = document.getElementById("terrainSelect");
+                var buttonsDiv = document.getElementById("buttonsDiv");
+                var selectedTerrainInput = document.getElementById("selectedTerrain");
+
+                if (selectElement.value !== "") {
+                    buttonsDiv.style.display = "block";
+                    selectedTerrainInput.value = selectElement.value;
+                } else {
+                    buttonsDiv.style.display = "none";
+                    selectedTerrainInput.value = "";
+                }
+            }
+
+
+        </script>
+
+    </div>
+{% endblock %}

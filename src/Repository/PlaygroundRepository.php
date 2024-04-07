@@ -41,6 +41,19 @@ class PlaygroundRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findPlaygroundsByType($type)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.type = :type')
+            ->setParameter('type', $type)
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
 //    /**
 //     * @return Playground[] Returns an array of Playground objects
 //     */

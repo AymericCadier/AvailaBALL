@@ -18,6 +18,12 @@ app_validate_event_refuse:
     methods: [GET, POST]
     controller: App\Controller\AdminController::refuseEvent
 
+app_session_create:
+    path: /create-session
+    methods: [POST]
+    controller: App\Controller\SessionController::createSession
+
+
     # Autres définitions de routes...
 
 

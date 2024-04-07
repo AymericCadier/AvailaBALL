@@ -27,6 +27,9 @@ class Playground
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $name = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $type = null;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
@@ -57,12 +60,12 @@ class Playground
         return $this;
     }
 
-    public function getName(): ?float
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(?float $name): static
+    public function setName(?string $name): static
     {
         $this->note = $name;
 
@@ -125,6 +128,18 @@ class Playground
                 $session->setIdPlayground(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }
