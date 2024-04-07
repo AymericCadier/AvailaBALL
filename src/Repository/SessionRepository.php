@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Session;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -64,6 +65,20 @@ class SessionRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    public function findSessionsByActiveUser(int $user)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.id_user = :user')
+            ->setParameter('user', $user)
+            ->andWhere('s.date >= CURRENT_DATE()')
+            ->andWhere('s.end_hour IS NULL')
+            ->orderBy('s.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\PlaygroundRepository;
+use App\Repository\SessionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -51,4 +52,31 @@ class SessionController extends AbstractController
 
         return $this->redirectToRoute('app_home');
     }
+
+    #[Route('/end-session', name: 'app_session_end', methods: ['POST'])]
+    public function endSession(Request $request, SessionRepository $sessionRepository, EntityManagerInterface $entityManager): RedirectResponse
+    {
+        $user = $this->getUser();
+
+        $sessions = $sessionRepository->findSessionsByActiveUser($user->getId());
+
+        if (!empty($sessions)) {
+            $session = end($sessions);
+
+            $currentTime = new DateTime('now', new DateTimeZone('UTC'));
+            $currentTime->setTimezone(new DateTimeZone('Europe/Paris'));
+            $endHour = DateTime::createFromFormat('H:i:s', $currentTime->format('H:i:s'));
+            $session->setEndHour($endHour);
+
+            $entityManager->persist($session);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_maps');
+    }
+
+
+
+
+
 }

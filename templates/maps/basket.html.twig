@@ -23,7 +23,7 @@
                 </iframe>
             </div>
 
-            <select id="terrainSelect" onchange="updateButtons()">
+            <select id="terrainSelect" class="d-none" onchange="updateButtons()">
                 <option value="">Choisissez un terrain</option>
                 {% for terrain in terrains %}
                     <option value="{{ terrain.id }}">{{ terrain.name }}</option>
@@ -31,12 +31,18 @@
             </select>
 
             <div id="buttonsDiv" style="display: none;">
-                <form id="createSessionForm" method="POST" action="{{ path('app_session_create') }}">
-                    <input type="hidden" id="selectedTerrain" name="terrain_id">
-                    <button type="submit">J'y suis</button>
-                </form>
-                <button onclick="notifyStatus(false)">Je n'y suis plus</button>
+                {% if hasActiveSession %}
+                    <form id="endSessionForm" method="POST" action="{{ path('app_session_end') }}">
+                        <button type="submit">Je n'y suis plus</button>
+                    </form>
+                {% else %}
+                    <form id="createSessionForm" method="POST" action="{{ path('app_session_create') }}">
+                        <input type="hidden" id="selectedTerrain" name="terrain_id">
+                        <button type="submit">J'y suis</button>
+                    </form>
+                {% endif %}
             </div>
+
         </div>
 
         <!-- Bootstrap Bundle with Popper -->
@@ -51,14 +57,28 @@
                 if (selectElement.value !== "") {
                     buttonsDiv.style.display = "block";
                     selectedTerrainInput.value = selectElement.value;
+
+                    // Masquer le bouton "Je n'y suis plus" si aucune session active et un terrain est sélectionné
+                    if (!{% if hasActiveSession %}true{% else %}false{% endif %}) {
+                        document.querySelector('#endSessionForm').style.display = 'none';
+                        document.querySelector('#createSessionForm').style.display = 'block';
+                    }
                 } else {
                     buttonsDiv.style.display = "none";
                     selectedTerrainInput.value = "";
                 }
             }
 
-
+            // Afficher ou masquer le bouton initial en fonction de hasActiveSession
+            {% if hasActiveSession %}
+            document.getElementById("buttonsDiv").style.display = "block";
+            document.getElementById("terrainSelect").classList.add("d-none");
+            {% else %}
+            document.getElementById("buttonsDiv").style.display = "none";
+            document.getElementById("terrainSelect").classList.remove("d-none");
+            {% endif %}
         </script>
+
 
     </div>
 {% endblock %}
