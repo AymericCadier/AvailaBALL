@@ -22,8 +22,9 @@
                         allowfullscreen>
                 </iframe>
             </div>
-
+            {% if app.user %}
             <select id="terrainSelect" class="d-none" onchange="updateButtons()">
+
                 <option value="">Choisissez un terrain</option>
                 {% for terrain in terrains %}
                     <option value="{{ terrain.id }}">{{ terrain.name }}</option>
@@ -42,6 +43,7 @@
                     </form>
                 {% endif %}
             </div>
+            {% endif %}
 
         </div>
 

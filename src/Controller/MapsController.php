@@ -23,6 +23,9 @@ class MapsController extends AbstractController
     public function hasActiveSession(SessionRepository $sessionRepository): bool
     {
         $user = $this->getUser();
+        if (!$user) {
+            return false;
+        }
         $sessions = $sessionRepository->findSessionsByActiveUser($user->getId());
 
         return !empty($sessions);

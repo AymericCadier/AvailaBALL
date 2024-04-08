@@ -18,30 +18,32 @@
                         frameborder="0" style="border:0"
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
-                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBaQqX1BORIFSqw2czUAGiMSxmocWTMapM&q=terrains+basket+in+Paris"
+                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBaQqX1BORIFSqw2czUAGiMSxmocWTMapM&q=terrains+foot+in+Paris"
                         allowfullscreen>
                 </iframe>
             </div>
+            {% if app.user %}
+                <select id="terrainSelect" class="d-none" onchange="updateButtons()">
 
-            <select id="terrainSelect" class="d-none" onchange="updateButtons()">
-            <option value="">Choisissez un terrain</option>
-                {% for terrain in terrains %}
-                    <option value="{{ terrain.id }}">{{ terrain.name }}</option>
-                {% endfor %}
-            </select>
+                    <option value="">Choisissez un terrain</option>
+                    {% for terrain in terrains %}
+                        <option value="{{ terrain.id }}">{{ terrain.name }}</option>
+                    {% endfor %}
+                </select>
 
-            <div id="buttonsDiv" style="display: none;">
-                {% if hasActiveSession %}
-                    <form id="endSessionForm" method="POST" action="{{ path('app_session_end') }}">
-                        <button type="submit">Je n'y suis plus</button>
-                    </form>
-                {% else %}
-                    <form id="createSessionForm" method="POST" action="{{ path('app_session_create') }}">
-                        <input type="hidden" id="selectedTerrain" name="terrain_id">
-                        <button type="submit">J'y suis</button>
-                    </form>
-                {% endif %}
-            </div>
+                <div id="buttonsDiv" style="display: none;">
+                    {% if hasActiveSession %}
+                        <form id="endSessionForm" method="POST" action="{{ path('app_session_end') }}">
+                            <button type="submit">Je n'y suis plus</button>
+                        </form>
+                    {% else %}
+                        <form id="createSessionForm" method="POST" action="{{ path('app_session_create') }}">
+                            <input type="hidden" id="selectedTerrain" name="terrain_id">
+                            <button type="submit">J'y suis</button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% endif %}
 
         </div>
 

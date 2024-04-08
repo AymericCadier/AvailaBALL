@@ -40,3 +40,13 @@ a {
     color: white;
     text-decoration: none;
 }
+
+
+
+table {
+    border-spacing: 0 10px;
+}
+
+td,th {
+    padding: 10px 10px 10px 10px;
+}

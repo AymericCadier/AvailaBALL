@@ -20,15 +20,11 @@ class AdminController extends AbstractController
     #[Route("/index/admin", name: "app_admin")]
     public function profile(): Response
     {
-        // Vérifie si l'utilisateur est connecté
         if (!$this->getUser()) {
-            // Redirige vers la page de connexion
             return $this->redirectToRoute('app_login');
         }
 
-        // Code pour afficher la page de profil
         return $this->render('admin/index.html.twig', [
-            // Passer éventuellement des données à votre template Twig
         ]);
     }
 
