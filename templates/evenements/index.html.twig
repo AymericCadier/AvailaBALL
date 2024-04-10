@@ -1,9 +1,29 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
 
-{% block title %}Liste des Événements{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    {% endblock %}
+
+
+</head>
+<body style="background-color: #16191c; color: white">
 
 {% block body %}
+<div class="d-flex flex-row">
+    {% include 'base.html.twig' %}
+
+    <div class="flex-grow-1">
     <h1>Liste des Événements</h1>
+        {% if app.user %}
+            <li><a class="dropdown-item" href="{{ path('app_create_evenements') }}"><button class="btn btn-primary">Créer un évènement !</button></a></li>
+        {% endif %}
 
     <ul>
         {% for event in events %}
@@ -31,9 +51,11 @@
         {% else %}
             <li>Aucun événement trouvé.</li>
         {% endfor %}
-        {% if app.user %}
-        <li><a class="dropdown-item" href="{{ path('app_create_evenements') }}">Créer un évènement !</a></li>
-        {% endif %}
+
 
     </ul>
 {% endblock %}
+
+    </div>
+</div>
+</body></html>

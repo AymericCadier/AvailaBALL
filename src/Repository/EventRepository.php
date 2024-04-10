@@ -60,7 +60,7 @@ class EventRepository extends ServiceEntityRepository
     public function listValidEvents(){
         return $this->createQueryBuilder('e')
             ->andWhere('e.valid=1')
-            ->orderBy('e.id', 'ASC')
+            ->orderBy('e.id', 'DESC')
             ->getQuery()
             ->getResult()
             ;

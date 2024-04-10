@@ -1,9 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
 
-{% extends 'base.html.twig' %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
-{% block title %}Création d'évènements{% endblock %}
+    {% endblock %}
+
+
+</head>
+<body style="background-color: #16191c; color: white">
 
 {% block body %}
+<div class="d-flex flex-row">
+    {% include 'base.html.twig' %}
+
+    <div class="flex-grow-1">
     <h1>Créer votre évènement</h1>
 
     {{ form_start(form) }}
@@ -25,3 +41,5 @@
     <button type="submit">Créer</button>
     {{ form_end(form) }}
 {% endblock %}
+    </div>
+</div></body></html>

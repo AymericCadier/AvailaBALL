@@ -1,14 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    {% endblock %}
+
+
+</head>
+<body style="background-color: #16191c; color: white">
+
 {% block body %}
     <div class="d-flex flex-row">
         {% include 'base.html.twig' %}
 
         <div class="flex-grow-1">
-            <style>
-                .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-                .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-            </style>
-
-            <div class="example-wrapper">
 
                 {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
                     <div>
@@ -20,7 +31,7 @@
                         <p>Date de création : {{ app.user.createdAt|date('Y-m-d H:i:s') }}</p>
                         <p>Rôles : {{ app.user.roles|join(', ') }}</p>
                     </div>
-                    <a class="dropdown-item" href="{{ path('app_unseen_events') }}">Valider les évènements</a>
+                    <a class="dropdown-item" href="{{ path('app_unseen_events') }}"><button class="btn btn-primary">Valider les évènements</button></a>
                 {% endif %}
             </div>
         </div>
