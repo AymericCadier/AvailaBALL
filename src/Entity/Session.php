@@ -25,6 +25,9 @@ class Session
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $end_hour = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $note = null;
+
     #[ORM\ManyToOne(inversedBy: 'sessions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $id_user = null;
@@ -109,6 +112,18 @@ class Session
     public function setIdPlayground(?Playground $id_playground): static
     {
         $this->id_playground = $id_playground;
+
+        return $this;
+    }
+
+    public function getNote(): ?float
+    {
+        return $this->note;
+    }
+
+    public function setNote(?float $note): static
+    {
+        $this->note = $note;
 
         return $this;
     }

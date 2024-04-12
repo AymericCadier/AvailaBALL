@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\NoteType;
 use App\Repository\PlaygroundRepository;
 use App\Repository\SessionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -54,7 +55,7 @@ class SessionController extends AbstractController
     }
 
     #[Route('/end-session', name: 'app_session_end', methods: ['POST'])]
-    public function endSession(Request $request, SessionRepository $sessionRepository, EntityManagerInterface $entityManager): RedirectResponse
+    public function endSession(Request $request, SessionRepository $sessionRepository, EntityManagerInterface $entityManager, PlaygroundRepository $playgroundRepository): RedirectResponse
     {
         $user = $this->getUser();
 
@@ -68,12 +69,22 @@ class SessionController extends AbstractController
             $endHour = DateTime::createFromFormat('H:i:s', $currentTime->format('H:i:s'));
             $session->setEndHour($endHour);
 
+            $note = $request->request->get('note');
+            if ($note !== null) {
+                $session->setNote($note);
+                $entityManager->flush();
+            }
+
             $entityManager->persist($session);
             $entityManager->flush();
+
+            $playgroundRepository->updateAverageNote($session->getIdPlayground());
+
         }
 
         return $this->redirectToRoute('app_maps');
     }
+
 
 
 

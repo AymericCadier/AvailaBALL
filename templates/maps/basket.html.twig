@@ -49,8 +49,15 @@
             <div id="buttonsDiv" style="display: none;">
                 {% if hasActiveSession %}
                     <form id="endSessionForm" method="POST" action="{{ path('app_session_end') }}">
-                        <button type="submit">Je n'y suis plus</button>
+                        <button type="button" id="leaveButton">Je n'y suis plus</button>
+                        <div id="noteField" style="display: none;">
+                            <label for="note">Note (sur 5 ):</label>
+                            <input type="number" id="note" name="note" min="0" max="5" step="1" required>
+                            <button type="submit" id="submitNoteButton">Terminer votre session </button>
+                        </div>
                     </form>
+
+
                 {% else %}
                     <form id="createSessionForm" method="POST" action="{{ path('app_session_create') }}">
                         <input type="hidden" id="selectedTerrain" name="terrain_id">
@@ -94,6 +101,16 @@
             document.getElementById("buttonsDiv").style.display = "none";
             document.getElementById("terrainSelect").classList.remove("d-none");
             {% endif %}
+
+            document.getElementById("leaveButton").addEventListener("click", function(event) {
+                event.preventDefault();
+                var noteField = document.getElementById("noteField");
+                noteField.style.display = "block";
+            });
+            const leaveButton = document.getElementById('leaveButton');
+            leaveButton.addEventListener('click', function() {
+                leaveButton.style.display = 'none';
+            });
         </script>
 
 

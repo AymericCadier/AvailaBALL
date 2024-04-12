@@ -52,6 +52,22 @@ class PlaygroundRepository extends ServiceEntityRepository
         ;
     }
 
+    public function updateAverageNote(Playground $playground): void
+    {
+        $avgNote = $this->createQueryBuilder('p')
+            ->select('AVG(s.note) as avg_note')
+            ->join('p.sessions', 's')
+            ->where('p.id = :id')
+            ->setParameter('id', $playground->getId())
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        $playground->setNote($avgNote);
+        $this->getEntityManager()->flush();
+    }
+
+
+
 
 
 //    /**

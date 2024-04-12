@@ -53,5 +53,16 @@ class EvenementsController extends AbstractController
         ]);
     }
 
+    #[Route('/index/evenements_delete/{id}', name: 'app_event_delete')]
+    public function delete(Event $event, EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($event);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Votre événement a été supprimé avec succès.');
+
+        return $this->redirectToRoute('app_event_list');
+    }
+
 
 }

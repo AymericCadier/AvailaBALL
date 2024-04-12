@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Playground;
+use App\Form\NoteType;
 use App\Repository\SessionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,10 +37,12 @@ class MapsController extends AbstractController
     {
         $terrains = $entityManager->getRepository(Playground::class)->findPlaygroundsByType('basket');
         $hasActiveSession = $this->hasActiveSession($sessionRepository);
+        $noteForm = $this->createForm(NoteType::class);
 
         return $this->render('maps/basket.html.twig', [
             'terrains' => $terrains,
-            'hasActiveSession' => $hasActiveSession
+            'hasActiveSession' => $hasActiveSession,
+            'noteForm' => $noteForm->createView()
         ]);
     }
 
@@ -48,10 +51,12 @@ class MapsController extends AbstractController
     {
         $terrains = $entityManager->getRepository(Playground::class)->findPlaygroundsByType('foot');
         $hasActiveSession = $this->hasActiveSession($sessionRepository);
+        $noteForm = $this->createForm(NoteType::class);
 
         return $this->render('maps/foot.html.twig', [
             'terrains' => $terrains,
-            'hasActiveSession' => $hasActiveSession
+            'hasActiveSession' => $hasActiveSession,
+            'noteForm' => $noteForm->createView()
         ]);
     }
 }
