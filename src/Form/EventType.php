@@ -19,8 +19,12 @@ class EventType extends AbstractType
             ->add('duration')
             ->add('type')
             ->add('id_playground', EntityType::class, [
-                'class' => Playground::class, 'choice_label' => 'id',
+                'class' => Playground::class,
+                'choice_label' => function (Playground $playground) {
+                    return $playground->getName();
+                },
             ])
+
         ;
     }
 

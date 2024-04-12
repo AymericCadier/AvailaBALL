@@ -44,6 +44,10 @@ class UserRepository extends ServiceEntityRepository
         return $this->find($id);
     }
 
+    public function listActiveUsers(){
+        return $this->findBy(['deleted_at' => null]);
+    }
+
     public function getUser($email,$password){
         $user = $this->findOneBy(['email' => $email, 'password' => $password]);
         return $user;
@@ -59,22 +63,9 @@ class UserRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
-    public function deleteUser($email,$password){
-        $user = $this->findOneBy(['email' => $email, 'password' => $password]);
-        $this->_em->remove($user);
-        $this->_em->flush();
-    }
 
-    public function updateUser($id, $lname, $fname ,$username, $password, $email){
-        $user = $this->find($id);
-        $user->setLname($lname);
-        $user->setFname($fname);
-        $user->setNickname($username);
-        $user->setPassword($password);
-        $user->setEmail($email);
-        $this->_em->persist($user);
-        $this->_em->flush();
-    }
+
+
 
 //    /**
 //     * @return User[] Returns an array of User objects

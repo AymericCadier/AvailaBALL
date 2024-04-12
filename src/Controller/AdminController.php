@@ -6,6 +6,7 @@ use App\Entity\Event;
 use App\Form\UpdateAccountType;
 use App\Form\ValidateEventType;
 use App\Repository\EventRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,13 +19,16 @@ use App\Entity\User;
 class AdminController extends AbstractController
 {
     #[Route("/index/admin", name: "app_admin")]
-    public function profile(): Response
+    public function profile(UserRepository $userRepository): Response
     {
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_login');
         }
 
+        $users = $userRepository->listActiveUsers();
+
         return $this->render('admin/index.html.twig', [
+            'users' => $users,
         ]);
     }
 
@@ -44,7 +48,7 @@ class AdminController extends AbstractController
         $event = $entityManager->getRepository(Event::class)->find($id);
 
         if (!$event || $event->getValid() !== null) {
-        throw $this->createNotFoundException("Cet événement n'existe pas ou a déjà été traité.");
+            throw $this->createNotFoundException("Cet événement n'existe pas ou a déjà été traité.");
         }
 
         $event->setValid(true);
@@ -68,6 +72,14 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('app_unseen_events');
     }
 
+    #[Route("/index/delete_admin/{id}", name: "app_admin_delete")]
+    public function deleteUser(Request $request, EntityManagerInterface $entityManager, $id): Response
+    {
+        $repository = $entityManager->getRepository(User::class);
+        $repository->deleteUserId($id);
+        $this->addFlash('success', 'Le compte de l\'utilisateur a été supprimé avec succès.');
+        return $this->redirectToRoute('app_admin');
+    }
 
 
 

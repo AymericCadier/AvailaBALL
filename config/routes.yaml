@@ -23,12 +23,15 @@ app_session_create:
     methods: [POST]
     controller: App\Controller\SessionController::createSession
 
+app_admin_delete_user:
+    path: /admin/delete-user/{id}
+    methods: ['DELETE']
+    controller: App\Controller\AdminController::deleteUser
+
+
 
     # Autres définitions de routes...
 
 
 
     # config/routes.yaml
-
-
-

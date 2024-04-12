@@ -21,19 +21,37 @@
 
         <div class="flex-grow-1">
 
-                {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
-                    <div>
-                        <h2>Informations admin</h2>
-                        <p>Prénom : {{ app.user.fname }}</p>
-                        <p>Nom de famille : {{ app.user.lname }}</p>
-                        <p>Nom d'utilisateur : {{ app.user.nickname }}</p>
-                        <p>Email : {{ app.user.email }}</p>
-                        <p>Date de création : {{ app.user.createdAt|date('Y-m-d H:i:s') }}</p>
-                        <p>Rôles : {{ app.user.roles|join(', ') }}</p>
-                    </div>
-                    <a class="dropdown-item" href="{{ path('app_unseen_events') }}"><button class="btn btn-primary">Valider les évènements</button></a>
-                {% endif %}
-            </div>
+            {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+                <div>
+                    <h2>Informations admin</h2>
+                    <p>Prénom : {{ app.user.fname }}</p>
+                    <p>Nom de famille : {{ app.user.lname }}</p>
+                    <p>Nom d'utilisateur : {{ app.user.nickname }}</p>
+                    <p>Email : {{ app.user.email }}</p>
+                    <p>Date de création : {{ app.user.createdAt|date('Y-m-d H:i:s') }}</p>
+                    <p>Rôles : ADMIN </p>
+                </div>
+                <a class="dropdown-item" href="{{ path('app_unseen_events') }}"><button class="btn btn-primary">Valider les évènements</button></a>
+                <form method="POST" id="delete-user-form">
+                    <select name="user_id" id="user-select">
+                        {% for user in users %}
+                            <option value="{{ user.id }}">{{ user.nickname }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Supprimer l'utilisateur</button>
+                </form>
+            {% endif %}
         </div>
     </div>
+    </div>
 {% endblock %}
+
+<script>
+    const form = document.getElementById('delete-user-form');
+    const select = document.getElementById('user-select');
+
+    select.addEventListener('change', () => {
+        const selectedUserId = select.value;
+        form.action = `{{ path('app_admin_delete', {'id': '__ID__'}) }}`.replace('__ID__', selectedUserId);
+    });
+</script>
