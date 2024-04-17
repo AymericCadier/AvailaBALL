@@ -6,56 +6,52 @@
     <title>Accueil</title>
 
     {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/css/timeline.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
     {% endblock %}
 
-
 </head>
-<body style="background-color: #16191c; color: white">
+<body>
 
 {% block body %}
-<div class="d-flex flex-row">
-    {% include 'base.html.twig' %}
+    <div class="d-flex flex-row">
+        {% include 'base.html.twig' %}
 
-    <div class="flex-grow-1">
-    <h1>Liste des Événements</h1>
-        {% if app.user %}
-            <li><a class="dropdown-item" href="{{ path('app_create_evenements') }}"><button class="btn btn-primary">Créer un évènement !</button></a></li>
-        {% endif %}
+        <div class="flex-grow-1 timeline" >
+            <h1>Liste des Événements</h1>
+            {% if app.user %}
+                <li><a class="dropdown-item" href="{{ path('app_create_evenements') }}"><button class="btn btn-primary">Créer un évènement !</button></a></li>
+            {% endif %}
 
-    <ul>
-        {% for event in events %}
-            <li>
-
-                Nom : {{ event.name }}
-                <br>
-                Date : {{ event.date|date('d/m/Y H:i') }}
-                <br>
-                Durée : {{ event.duration }}
-                <br>
-                Type : {{ event.type }}
-                <br>
-                Créé le : {{ event.createdAt|date('d/m/Y H:i') }}
-                <br>
-
-                {% if event.idPlayground %}
-                    Terrain : {{ event.idPlayground.name }}
-                    <br>
-                {% endif %}
-                Valid : {% if event.valid %}Oui{% else %}Non{% endif %}
-                <hr>
-            </li>
-
-        {% else %}
-            <li>Aucun événement trouvé.</li>
-        {% endfor %}
-
-
-    </ul>
+            <ol style="--length: 5" role="list">
+                {% for event in events %}
+                    <li style="--i: {{ loop.index }}">
+                        <h3>{{ event.name }}</h3>
+                        <p>
+                            Date : {{ event.date|date('d/m/Y H:i') }}
+                            <br>
+                            Durée : {{ event.duration }}
+                            <br>
+                            Type : {{ event.type }}
+                            <br>
+                            Créé le : {{ event.createdAt|date('d/m/Y H:i') }}
+                            <br>
+                            {% if event.idPlayground %}
+                                Terrain : {{ event.idPlayground.name }}
+                                <br>
+                            {% endif %}
+                            Valid : {% if event.valid %}Oui{% else %}Non{% endif %}
+                        </p>
+                    </li>
+                {% else %}
+                    <li>Aucun événement trouvé.</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
 {% endblock %}
 
-    </div>
-</div>
-</body></html>
+</body>
+</html>
