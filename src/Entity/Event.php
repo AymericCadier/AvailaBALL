@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\EventRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 class Event
@@ -14,18 +15,25 @@ class Event
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank(message: "Le nom de l'événement ne peut pas être vide.")]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $name = null;
+
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
     private ?string $valid = null;
 
+    #[Assert\Date()]
+    #[Assert\NotBlank(message: "La date de l'événement ne peut pas être vide.")]
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
 
+
+    #[Assert\NotBlank(message: "La durée de l'événement ne peut pas être vide.")]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $duration = null;
 
+    #[Assert\NotBlank(message: "Le type de l'événement ne peut pas être vide.")]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $type = null;
 
