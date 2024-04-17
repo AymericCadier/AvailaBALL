@@ -7,19 +7,25 @@
 {% block body %}
     <section class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-12">
                 <h1>Messagerie</h1>
-                <p>Résumé de la messagerie</p>
-                <p>Reçu : {{ app.user.received|length }}</p>
-                <p>Envoyés : {{ app.user.sent|length }}</p>
+                <h2>{{ message.title }}</h2>
+                <p>Message de {{ message.sender.email }}</p>
+                <p>Le {{ message.createdAt|date }}</p>
+                <div>{{ message.message }}</div>
+
+
                 <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                    aria-controls="offcanvasExample">
-                    Link with href
+                    Voir mes dossiers
                 </a>
-                <a href="{{ path('app_send_message') }}" class="btn btn-primary">Envoyer un message</a>
+                <a href="{{ path('app_received_messages') }}" class="btn btn-primary">Retour à la réception</a>
+
+
             </div>
         </div>
     </section>
+
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
             <h2 class="offcanvas-title" id="offcanvasExampleLabel">Mes dossiers</h2>
@@ -32,7 +38,7 @@
             </div>
             <div class="list-group">
                 <a href="{{ path("app_received_messages") }}" class="list-group-item
-                list-group-item-action">Boîte de réception</a>
+                list-group-item-action active">Boîte de réception</a>
             </div>
             <div class="list-group">
                 <a href="{{ path("app_sent_messages") }}" class="list-group-item
