@@ -15,7 +15,7 @@ class EventType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('date')
+            ->add('date', null, ['input' => 'datetime', 'format' => 'yyyy-MM-dd'])
             ->add('duration')
             ->add('type')
             ->add('id_playground', EntityType::class, [

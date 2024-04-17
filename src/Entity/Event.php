@@ -23,7 +23,7 @@ class Event
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
     private ?string $valid = null;
 
-    #[Assert\Date()]
+
     #[Assert\NotBlank(message: "La date de l'événement ne peut pas être vide.")]
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
