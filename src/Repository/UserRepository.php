@@ -34,9 +34,11 @@ class UserRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
-    public function deleteUserId($id){
+    public function deleteUserId($id)
+    {
         $user = $this->find($id);
-        $this->_em->remove($user);
+        $user->setDeletedAt($user->getCurrentDate());
+        $this->_em->persist($user);
         $this->_em->flush();
     }
 
@@ -52,17 +54,6 @@ class UserRepository extends ServiceEntityRepository
         $user = $this->findOneBy(['email' => $email, 'password' => $password]);
         return $user;
     }
-
-    public function getUserByEmailAndPassword($email, $password)
-    {
-        return $this->createQueryBuilder('u')
-            ->where('u.email = :email')
-            ->andWhere('u.password = :password')
-            ->setParameters(['email' => $email, 'password' => $password])
-            ->getQuery()
-            ->getOneOrNullResult();
-    }
-
 
 
 

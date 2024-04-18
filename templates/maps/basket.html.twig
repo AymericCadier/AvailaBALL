@@ -45,7 +45,7 @@
 
                 <option value="">Choisissez un terrain</option>
                 {% for terrain in terrains %}
-                    <option value="{{ terrain.id }}">{{ terrain.name }} (note sur 5 : {{ terrain.note}}) : {{ terrain.countUser}} joueurs </option>
+                    <option value="{{ terrain.id }}">{{ terrain.name }} , note  : {{ terrain.note}}/5 , {{ terrain.countUser}} joueurs </option>
                 {% endfor %}
             </select>
 

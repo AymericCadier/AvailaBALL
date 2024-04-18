@@ -87,36 +87,14 @@
 
                     <i id="left" class="fa-solid fa-angle-left"></i>
                     <ul class="carousel">
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>Carpentier</h2>
-                            <span>Terrain Basket/foot</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>Maryse Hilz</h2>
-                            <span>Terrain foot/basket</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>St Paul</h2>
-                            <span>Terrain Basket</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>Charenton</h2>
-                            <span>Terrain Basket/foot</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>Ladoumegue</h2>
-                            <span>Terrain Foot/Basket</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>Pigalle</h2>
-                            <span>Terrain Basket</span>
-                        </li>
+                        {% for playground in playgrounds %}
+                            <li class="card">
+                                <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
+                                <h2>{{ playground.name }}</h2>
+                                <span>Terrain de {{ playground.type }}</span>
+                            </li>
+                        {% endfor %}
+                        <p align="center">Voici quelque terrains coup de coeur de ce mois ci :</p>
                     </ul>
                     <i id="right" class="fa-solid fa-angle-right"></i>
                 </div>
