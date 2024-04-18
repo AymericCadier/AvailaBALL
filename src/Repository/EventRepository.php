@@ -33,30 +33,6 @@ class EventRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findEventsByTime($time)
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.time = :time')
-            ->setParameter('time', $time)
-            ->orderBy('e.id', 'ASC')
-            ->getQuery()
-            ->getResult()
-            ;
-    }
-
-    public function findEventsByPlaygroundIdAndDate($id, $date)
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.id_playground = :id')
-            ->andWhere('e.date = :date')
-            ->setParameter('id', $id)
-            ->setParameter('date', $date)
-            ->orderBy('e.id', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
     public function listValidEvents(){
         return $this->createQueryBuilder('e')
             ->andWhere('e.valid=1')

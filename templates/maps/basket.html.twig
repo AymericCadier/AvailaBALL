@@ -33,7 +33,7 @@
                         frameborder="0" style="border:0"
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
-                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBaQqX1BORIFSqw2czUAGiMSxmocWTMapM&q=terrains%20basket%20in%20Paris"
+                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAAc4svJETyQCTA9SfVyhy1jdteoCeIT6k&q=terrains%20basket%20in%20Paris"
                         allowfullscreen>
                 </iframe>
             </div>
@@ -43,7 +43,7 @@
 
                 <option value="">Choisissez un terrain</option>
                 {% for terrain in terrains %}
-                    <option value="{{ terrain.id }}">{{ terrain.name }}</option>
+                    <option value="{{ terrain.id }}">{{ terrain.name }} (note sur 5 : {{ terrain.note}}) : {{ terrain.countUser}} joueurs </option>
                 {% endfor %}
             </select>
 

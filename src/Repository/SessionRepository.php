@@ -22,18 +22,6 @@ class SessionRepository extends ServiceEntityRepository
         parent::__construct($registry, Session::class);
     }
 
-
-    public function findSessionsById($id)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.id = :id')
-            ->setParameter('id', $id)
-            ->orderBy('s.id', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
     public function findSessionsByPlaygroundId($id)
     {
         return $this->createQueryBuilder('s')

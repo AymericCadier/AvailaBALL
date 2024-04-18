@@ -30,6 +30,9 @@ class Playground
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $type = null;
 
+    #[ORM\Column(type: Types::INTEGER, nullable: true)]
+    private ?string $countUser = null;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
@@ -141,6 +144,30 @@ class Playground
     {
         $this->type = $type;
 
+        return $this;
+    }
+
+    public function getCountUser(): ?string
+    {
+        return $this->countUser;
+    }
+
+    public function setCountUser(?string $countUser): static
+    {
+        $this->countUser = $countUser;
+
+        return $this;
+    }
+
+    public function adduser(): static
+    {
+        $this->countUser += 1;
+        return $this;
+    }
+
+    public function removeuser(): static
+    {
+        $this->countUser -= 1;
         return $this;
     }
 }

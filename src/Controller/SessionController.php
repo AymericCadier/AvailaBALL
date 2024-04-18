@@ -47,6 +47,7 @@ class SessionController extends AbstractController
         $beginHour = DateTime::createFromFormat('H:i:s', $currentTime->format('H:i:s'));
         $session->setBeginHour($beginHour);
 
+        $playground->adduser();
 
         $entityManager->persist($session);
         $entityManager->flush();
@@ -60,6 +61,7 @@ class SessionController extends AbstractController
         $user = $this->getUser();
 
         $sessions = $sessionRepository->findSessionsByActiveUser($user->getId());
+        $playground = $sessions[0]->getIdPlayground();
 
         if (!empty($sessions)) {
             $session = end($sessions);
@@ -74,6 +76,8 @@ class SessionController extends AbstractController
                 $session->setNote($note);
                 $entityManager->flush();
             }
+
+            $playground->removeuser();
 
             $entityManager->persist($session);
             $entityManager->flush();
