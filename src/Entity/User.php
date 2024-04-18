@@ -85,12 +85,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
-    /* public function setId(int $id): static
+    public function setId(int $id): static
     {
         $this->id = $id;
 
         return $this;
-    } */
+    }
 
     public function getLname(): ?string
     {

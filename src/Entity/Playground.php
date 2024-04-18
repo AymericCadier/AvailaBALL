@@ -70,7 +70,7 @@ class Playground
 
     public function setName(?string $name): static
     {
-        $this->note = $name;
+        $this->name = $name;
 
         return $this;
     }
