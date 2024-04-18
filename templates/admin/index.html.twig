@@ -7,6 +7,7 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/css/test.css') }}">
+        <<link rel="stylesheet" href="{{ asset('styles/css/bouton.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     {% endblock %}
 </head>
@@ -67,26 +68,27 @@
                                                         <h6 class="text-muted f-w-400">{% if 'ROLE_ADMIN' in app.user.roles %}Admin{% else %}Utilisateur{% endif %}</h6>
                                                     </div>
                                                 </div>
-                                                {% if 'ROLE_ADMIN' in app.user.roles %}
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <a class="dropdown-item" href="{{ path('app_unseen_events') }}"><button class="btn btn-primary mt-3">Valider les évènements</button></a>
-                                                            <form method="POST" id="delete-user-form">
-                                                                <select name="user_id" id="user-select">
-                                                                    {% for user in users %}
-                                                                        <option value="{{ user.id }}">{{ user.nickname }}</option>
-                                                                    {% endfor %}
-                                                                </select>
-                                                                <button type="submit">Supprimer l'utilisateur</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                {% endif %}
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                {% if 'ROLE_ADMIN' in app.user.roles %}
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-around">
+                                            <a class="dropdown-item" href="{{ path('app_unseen_events') }}"><button class="submit-button">Valider les évènements</button></a>
+                                            <form method="POST" id="delete-user-form" class="d-flex align-items-center">
+                                                <select name="user_id" id="user-select" class="mr-2">
+                                                    {% for user in users %}
+                                                        <option value="{{ user.id }}">{{ user.nickname }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <button type="submit" class="submit-button">Supprimer</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
                             </div>
                         </div>
                     </div>

@@ -7,6 +7,7 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/css/bouton.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
     {% endblock %}
@@ -36,8 +37,9 @@
                         src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAAc4svJETyQCTA9SfVyhy1jdteoCeIT6k&q=terrains%20foot%20in%20Paris"
                         allowfullscreen>
                 </iframe>
-
             </div>
+
+            <br><br>
             <div class="text-center">
             {% if app.user %}
                 <select id="terrainSelect" class="d-none" onchange="updateButtons()">
@@ -48,10 +50,11 @@
                     {% endfor %}
                 </select>
 
+                <br><br>
                 <div id="buttonsDiv" style="display: none;">
                     {% if hasActiveSession %}
                         <form id="endSessionForm" method="POST" action="{{ path('app_session_end') }}">
-                            <button type="button" id="leaveButton">Je n'y suis plus</button>
+                            <button type="button" id="leaveButton" class="submit-button">Je n'y suis plus</button>
                             <div id="noteField" style="display: none;">
                                 <label for="note">Note (sur 5 ):</label>
                                 <input type="number" id="note" name="note" min="0" max="5" step="1" required>
@@ -63,7 +66,7 @@
                     {% else %}
                         <form id="createSessionForm" method="POST" action="{{ path('app_session_create') }}">
                             <input type="hidden" id="selectedTerrain" name="terrain_id">
-                            <button type="submit">J'y suis</button>
+                            <button type="submit" class="submit-button">J'y suis</button>
                         </form>
                     {% endif %}
                 </div>

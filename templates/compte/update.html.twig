@@ -6,7 +6,9 @@
     <title>Profil</title>
 
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/compte/profil.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/css/create_evenement.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/css/bouton.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     {% endblock %}
 
 </head>
@@ -17,22 +19,34 @@
         {% include 'base.html.twig' %}
 
         <div class="flex-grow-1">
+            <div class="login-box">
+                {% if app.user %}
+                    <h2>Modifier mon compte</h2>
+                    {{ form_start(form) }}
+                    <div class="user-box">
+                        {{ form_label(form.lname, 'Nom', {'label_attr': {'class': 'user-box-label'}}) }}
+                        <br>
+                        {{ form_widget(form.lname, {'attr': {'class': 'user-box-input'}}) }}
+                    </div>
+                    <div class="user-box">
+                        {{ form_label(form.fname, 'Prénom', {'label_attr': {'class': 'user-box-label'}}) }}
+                        <br>
+                        {{ form_widget(form.fname, {'attr': {'class': 'user-box-input'}}) }}
+                    </div>
+                    <div class="user-box">
+                        {{ form_label(form.nickname, 'Pseudo', {'label_attr': {'class': 'user-box-label'}}) }}
+                        <br>
+                        {{ form_widget(form.nickname, {'attr': {'class': 'user-box-input'}}) }}
+                    </div>
 
-
-            {% if app.user %}
-                <div>
-                    <h1>Modifier mon compte</h1>
-                    <p>{{ form_start(form) }}</p>
-                    <p>{{ form_row(form.lname, {'label': 'Nom'}) }}</p>
-                    <p>{{ form_row(form.fname, {'label': 'Prénom'}) }}</p>
-                    <p>{{ form_row(form.nickname, {'label': 'Pseudo'}) }}</p>
-                </div>
-            {% endif %}
-            <li>
-                <button type="submit" class="btn btn-primary">Mettre à jour</button>
-            </li>
-            {{ form_end(form) }}
+                    <button class="submit-button" type="submit">Mettre à jour</button>
+                    {{ form_end(form) }}
+                {% endif %}
+            </div>
         </div>
     </div>
 
 {% endblock %}
+
+</body>
+</html>
