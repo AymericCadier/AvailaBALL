@@ -25,10 +25,10 @@ class MailerService
         $this->mailer->send($email);
     }
 
-    public function sendContactFormEmail(string $name, string $email, string $message): void
+    public function sendContactFormEmail(string $name, string $message): void
     {
         $email = (new NotificationEmail())
-            ->from($email)
+            ->from($this->adminEmail)
             ->to($this->adminEmail)
             ->subject('Nouveau message du formulaire de contact')
             ->html($this->twig->render(
