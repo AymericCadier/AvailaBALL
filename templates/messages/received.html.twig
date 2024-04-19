@@ -66,7 +66,7 @@
                                                 <div class="col">
                                                     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                                                        aria-controls="offcanvasExample">
-                                                        Voir mes dossiers
+                                                        Dashboard
                                                     </a>
                                                     <a href="{{ path('app_send_message') }}" class="btn btn-primary">Envoyer un message</a>
                                                 </div>
@@ -98,7 +98,7 @@
                 list-group-item-action active">Boîte de réception</a>
         </div>
         <div class="list-group">
-            <a href="{{ path("app_messages") }}" class="list-group-item
+            <a href="{{path('app_sent_messages')}}" class="list-group-item
                 list-group-item-action">Éléments envoyés</a>
         </div>
     </div>
