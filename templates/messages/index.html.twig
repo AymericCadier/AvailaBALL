@@ -1,43 +1,72 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messagerie</title>
 
-{% block title %}Messagerie{% endblock %}
+    <link rel="stylesheet" href="{{ asset('styles/css/test.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/bouton.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body style="background-color: black">
+<div class="d-flex flex-row">
+    {% include 'base.html.twig' %}
 
-
-
-{% block body %}
-    <section class="container">
-        <div class="row">
-            <div class="col">
-                <h1>Messagerie</h1>
-                <p>Résumé de la messagerie</p>
-                <p>Reçu : {{ app.user.received|length }}</p>
-                <p>Envoyés : {{ app.user.sent|length }}</p>
-                <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-                   aria-controls="offcanvasExample">
-                    Link with href
-                </a>
-                <a href="{{ path('app_send_message') }}" class="btn btn-primary">Envoyer un message</a>
+    <div class="flex-grow-1 main-body">
+        <div class="page-content page-container" id="page-content">
+            <div class="padding">
+                <div class="row container d-flex justify-content-center">
+                    <div class="col-xl-9 col-md-12">
+                        <div class="card user-card-full">
+                            <div class="row m-l-0 m-r-0">
+                                <div class="col-sm-4 bg-c-lite-green user-profile">
+                                    <div class="card-block text-center text-white">
+                                        <div class="m-b-25">
+                                            <h1>Messagerie</h1>
+                                            <p>Résumé de la messagerie</p>
+                                            <p>Reçu : {{ app.user.received|length }}</p>
+                                            <p>Envoyés : {{ app.user.sent|length }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8" style="background-color: #111c28">
+                                    <div class="card-block">
+                                        <a class="submit-button" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                                           aria-controls="offcanvasExample">
+                                            Link with href
+                                        </a>
+                                        <a href="{{ path('app_send_message') }}" class="submit-button">Envoyer un message</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <h2 class="offcanvas-title" id="offcanvasExampleLabel">Mes dossiers</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <div class="list-group">
-                <a href="{{ path("app_messages") }}" class="list-group-item
-                list-group-item-action active">Accueil</a>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h2 class="offcanvas-title" id="offcanvasExampleLabel">Mes dossiers</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="list-group">
-                <a href="{{ path("app_received_messages") }}" class="list-group-item
-                list-group-item-action">Boîte de réception</a>
-            </div>
-            <div class="list-group">
-                <a href="{{ path("app_sent_messages") }}" class="list-group-item
-                list-group-item-action">Éléments envoyés</a>
+            <div class="offcanvas-body">
+                <div class="list-group">
+                    <a href="{{ path("app_messages") }}" class="list-group-item
+                        list-group-item-action active">Accueil</a>
+                </div>
+                <div class="list-group">
+                    <a href="{{ path("app_received_messages") }}" class="list-group-item
+                        list-group-item-action">Boîte de réception</a>
+                </div>
+                <div class="list-group">
+                    <a href="{{ path("app_sent_messages") }}" class="list-group-item
+                        list-group-item-action">Éléments envoyés</a>
+                </div>
             </div>
         </div>
     </div>
-{% endblock %}
+</div>
+</body>
+</html>
