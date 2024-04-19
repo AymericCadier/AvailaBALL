@@ -7,7 +7,8 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+        <link rel="stylesheet" href="{{ asset('styles/css/bouton.css') }}">
+
 
     {% endblock %}
     
@@ -54,7 +55,7 @@
                         <h2 class="heading-section">Basket-ball</h2>
                         <p>
                             La passion du basketball vous anime, vous vagabondez dans Paris, ballon en main, à la recherche d'un terrain libre. Chaque coin de rue pourrait être l'arène de vos exploits, mais la réalité est souvent moins clémente : tous semblent occupés ou hors d'accès. Cette quête du terrain parfait devient alors un jeu en soi, teinté d'espoir et de détermination.</p>
-                        <a href="{{ path('app_maps_basket') }}"><button class="btn btn-primary">Voir les terrains</button></a>
+                        <a href="{{ path('app_maps_basket') }}"><button class="submit-button">Voir les terrains</button></a>
                     </div>
                 </div>
                 <br><br><br><br>
@@ -69,7 +70,7 @@
                         <h2 class="heading-section">Football</h2>
                         <p>
                             Le football est un sport qui se joue à 11 contre 11, avec un ballon rond. Le but du jeu est de marquer des buts en faisant passer le ballon dans les buts adverses. Le football est un sport collectif qui demande une grande cohésion d'équipe et une bonne condition physique. Il est très populaire dans le monde entier et est souvent considéré comme le sport le plus populaire au monde.</p>
-                        <a href="{{ path('app_maps_foot') }}"><button class="btn btn-primary">Voir les terrains</button></a>
+                        <a href="{{ path('app_maps_foot') }}"><button class="submit-button">Voir les terrains</button></a>
                     </div>
                     <div class="col-lg-6">
                         <img src="images/Sonn.png" alt="Football" class="img-fluid">
@@ -86,36 +87,14 @@
 
                     <i id="left" class="fa-solid fa-angle-left"></i>
                     <ul class="carousel">
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>Carpentier</h2>
-                            <span>Terrain Basket/foot</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>Maryse Hilz</h2>
-                            <span>Terrain foot/basket</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>St Paul</h2>
-                            <span>Terrain Basket</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>Charenton</h2>
-                            <span>Terrain Basket/foot</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>Ladoumegue</h2>
-                            <span>Terrain Foot/Basket</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                            <h2>Pigalle</h2>
-                            <span>Terrain Basket</span>
-                        </li>
+                        {% for playground in playgrounds %}
+                            <li class="card">
+                                <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
+                                <h2>{{ playground.name }}</h2>
+                                <span>Terrain de {{ playground.type }}</span>
+                            </li>
+                        {% endfor %}
+                        <p align="center">Voici quelque terrains coup de coeur de ce mois ci :</p>
                     </ul>
                     <i id="right" class="fa-solid fa-angle-right"></i>
                 </div>

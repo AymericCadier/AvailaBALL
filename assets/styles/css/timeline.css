@@ -4,6 +4,23 @@
     box-sizing: border-box;
 }
 
+#create-event-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#create-event-btn a {
+    display: block;
+    text-align: center;
+}
+
+
+
+h1{
+
+    text-align: center;
+}
 .timeline {
     font-family: Montserrat, sans-serif;
     margin: 0;

@@ -46,6 +46,15 @@ class PlaygroundRepository extends ServiceEntityRepository
         $this->getEntityManager()->flush();
     }
 
+    public function listPlaygrounds(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 
 
 

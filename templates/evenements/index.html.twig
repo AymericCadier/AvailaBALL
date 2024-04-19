@@ -7,6 +7,7 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/css/timeline.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/css/bouton.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
@@ -20,10 +21,13 @@
         {% include 'base.html.twig' %}
 
         <div class="flex-grow-1 timeline" >
-            <h1>Liste des Événements</h1>
+            <h1 style="color: white">Liste des Événements</h1>
             {% if app.user %}
-                <li><a class="dropdown-item" href="{{ path('app_create_evenements') }}"><button class="btn btn-primary">Créer un évènement !</button></a></li>
+                <div id="create-event-btn">
+                    <a class="dropdown-item" href="{{ path('app_create_evenements') }}"><button class="submit-button">Créer!</button></a>
+                </div>
             {% endif %}
+
 
             <ol style="--length: 5" role="list">
                 {% for event in events %}

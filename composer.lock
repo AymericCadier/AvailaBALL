@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "465ddf5b789453ce5c0663817a31b1a0",
+    "content-hash": "69fda77bbaae76e1062f35fe2d06c024",
     "packages": [
         {
             "name": "composer/semver",
@@ -1477,59 +1477,6 @@
             "time": "2023-10-06T06:47:41+00:00"
         },
         {
-            "name": "lorenzo/pinky",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lorenzo/pinky.git",
-                "reference": "e1b1bdb2c132b8a7ba32bca64d2443f646ddbd17"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lorenzo/pinky/zipball/e1b1bdb2c132b8a7ba32bca64d2443f646ddbd17",
-                "reference": "e1b1bdb2c132b8a7ba32bca64d2443f646ddbd17",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "ext-libxml": "*",
-                "ext-xsl": "*",
-                "php": ">=5.6.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.21 || ^9.5.10"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/pinky.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jose Lorenzo Rodriguez",
-                    "email": "jose.zap@gmail.com"
-                }
-            ],
-            "description": "A Foundation for Emails (Inky) template transpiler",
-            "keywords": [
-                "email",
-                "foundation",
-                "inky",
-                "template",
-                "zurb"
-            ],
-            "support": {
-                "issues": "https://github.com/lorenzo/pinky/issues",
-                "source": "https://github.com/lorenzo/pinky/tree/1.1.0"
-            },
-            "time": "2023-07-31T13:36:50+00:00"
-        },
-        {
             "name": "monolog/monolog",
             "version": "3.5.0",
             "source": {
@@ -2152,176 +2099,6 @@
             "time": "2021-07-14T16:46:02+00:00"
         },
         {
-            "name": "sendgrid/php-http-client",
-            "version": "4.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sendgrid/php-http-client.git",
-                "reference": "ec09bcfccabeb21d69e245a1e1c0e51f2813fc35"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sendgrid/php-http-client/zipball/ec09bcfccabeb21d69e245a1e1c0e51f2813fc35",
-                "reference": "ec09bcfccabeb21d69e245a1e1c0e51f2813fc35",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "php": ">=7.3"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.16",
-                "phpunit/phpunit": "^9",
-                "squizlabs/php_codesniffer": "~2.0"
-            },
-            "suggest": {
-                "composer/ca-bundle": "Including this library will ensure that a valid CA bundle is available for secure connections"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SendGrid\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matt Bernier",
-                    "email": "mbernier@twilio.com"
-                },
-                {
-                    "name": "Elmer Thomas",
-                    "email": "ethomas@twilio.com"
-                }
-            ],
-            "description": "HTTP REST client, simplified for PHP",
-            "homepage": "http://github.com/sendgrid/php-http-client",
-            "keywords": [
-                "api",
-                "fluent",
-                "http",
-                "rest",
-                "sendgrid"
-            ],
-            "support": {
-                "source": "https://github.com/sendgrid/php-http-client/tree/4.1.1"
-            },
-            "time": "2023-12-14T08:50:59+00:00"
-        },
-        {
-            "name": "sendgrid/sendgrid",
-            "version": "8.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sendgrid/sendgrid-php.git",
-                "reference": "6700d2cf50df38915fa2d9a03affbca58c48599f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/6700d2cf50df38915fa2d9a03affbca58c48599f",
-                "reference": "6700d2cf50df38915fa2d9a03affbca58c48599f",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-openssl": "*",
-                "php": ">=7.3",
-                "sendgrid/php-http-client": "~4.1",
-                "starkbank/ecdsa": "0.*"
-            },
-            "replace": {
-                "sendgrid/sendgrid-php": "*"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^1.5",
-                "phpunit/phpunit": "^9",
-                "squizlabs/php_codesniffer": "3.*",
-                "swaggest/json-diff": "^3.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SendGrid\\Mail\\": "lib/mail/",
-                    "SendGrid\\Stats\\": "lib/stats/",
-                    "SendGrid\\Helper\\": "lib/helper/",
-                    "SendGrid\\Contacts\\": "lib/contacts/",
-                    "SendGrid\\EventWebhook\\": "lib/eventwebhook/"
-                },
-                "classmap": [
-                    "lib/BaseSendGridClientInterface.php",
-                    "lib/SendGrid.php",
-                    "lib/TwilioEmail.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "This library allows you to quickly and easily send emails through Twilio SendGrid using PHP.",
-            "homepage": "http://github.com/sendgrid/sendgrid-php",
-            "keywords": [
-                "email",
-                "grid",
-                "send",
-                "sendgrid",
-                "twilio sendgrid"
-            ],
-            "support": {
-                "source": "https://github.com/sendgrid/sendgrid-php/tree/8.1.2"
-            },
-            "time": "2024-04-18T11:09:09+00:00"
-        },
-        {
-            "name": "starkbank/ecdsa",
-            "version": "0.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/starkbank/ecdsa-php.git",
-                "reference": "484bedac47bac4012dc73df91da221f0a66845cb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/starkbank/ecdsa-php/zipball/484bedac47bac4012dc73df91da221f0a66845cb",
-                "reference": "484bedac47bac4012dc73df91da221f0a66845cb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/ellipticcurve.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "StarkBank",
-                    "email": "developers@starkbank.com",
-                    "homepage": "https://starkbank.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "fast openSSL-compatible implementation of the Elliptic Curve Digital Signature Algorithm (ECDSA)",
-            "homepage": "https://github.com/starkbank/ecdsa-php",
-            "support": {
-                "issues": "https://github.com/starkbank/ecdsa-php/issues",
-                "source": "https://github.com/starkbank/ecdsa-php/tree/v0.0.5"
-            },
-            "time": "2021-06-06T22:24:49+00:00"
-        },
-        {
             "name": "symfony/asset",
             "version": "v7.0.3",
             "source": {
@@ -2883,71 +2660,6 @@
             "time": "2024-02-22T20:27:20+00:00"
         },
         {
-            "name": "symfony/css-selector",
-            "version": "v7.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/css-selector.git",
-                "reference": "ec60a4edf94e63b0556b6a0888548bb400a3a3be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/ec60a4edf94e63b0556b6a0888548bb400a3a3be",
-                "reference": "ec60a4edf94e63b0556b6a0888548bb400a3a3be",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\CssSelector\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Jean-François Simon",
-                    "email": "jeanfrancois.simon@sensiolabs.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Converts CSS selectors to XPath expressions",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v7.0.3"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-01-23T15:02:46+00:00"
-        },
-        {
             "name": "symfony/dependency-injection",
             "version": "v7.0.4",
             "source": {
@@ -3199,6 +2911,78 @@
                 }
             ],
             "time": "2024-02-27T12:34:35+00:00"
+        },
+        {
+            "name": "symfony/doctrine-messenger",
+            "version": "v7.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/doctrine-messenger.git",
+                "reference": "5a9ebba1b0be17af7b1e6b6433ad2cb6e35e97ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/doctrine-messenger/zipball/5a9ebba1b0be17af7b1e6b6433ad2cb6e35e97ca",
+                "reference": "5a9ebba1b0be17af7b1e6b6433ad2cb6e35e97ca",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^3.6|^4",
+                "php": ">=8.2",
+                "symfony/messenger": "^6.4|^7.0",
+                "symfony/service-contracts": "^2.5|^3"
+            },
+            "conflict": {
+                "doctrine/persistence": "<1.3"
+            },
+            "require-dev": {
+                "doctrine/persistence": "^1.3|^2|^3",
+                "symfony/property-access": "^6.4|^7.0",
+                "symfony/serializer": "^6.4|^7.0"
+            },
+            "type": "symfony-messenger-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Messenger\\Bridge\\Doctrine\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Doctrine Messenger Bridge",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/doctrine-messenger/tree/v7.0.4"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-02-22T20:27:20+00:00"
         },
         {
             "name": "symfony/dotenv",
@@ -4445,16 +4229,16 @@
         },
         {
             "name": "symfony/mailer",
-            "version": "v7.0.6",
+            "version": "v7.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "eb0c3187c7ddfde12d8aa0e1fa5fb29e730a41e0"
+                "reference": "72e16d87bf50a3ce195b9470c06bb9d7b816ea85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/eb0c3187c7ddfde12d8aa0e1fa5fb29e730a41e0",
-                "reference": "eb0c3187c7ddfde12d8aa0e1fa5fb29e730a41e0",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/72e16d87bf50a3ce195b9470c06bb9d7b816ea85",
+                "reference": "72e16d87bf50a3ce195b9470c06bb9d7b816ea85",
                 "shasum": ""
             },
             "require": {
@@ -4505,7 +4289,7 @@
             "description": "Helps sending emails",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/mailer/tree/v7.0.6"
+                "source": "https://github.com/symfony/mailer/tree/v7.0.4"
             },
             "funding": [
                 {
@@ -4521,34 +4305,54 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-28T09:20:36+00:00"
+            "time": "2024-02-03T21:34:19+00:00"
         },
         {
-            "name": "symfony/mailjet-mailer",
-            "version": "v7.0.3",
+            "name": "symfony/messenger",
+            "version": "v7.0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/mailjet-mailer.git",
-                "reference": "259754061bc1b6b3ebf251f2aa4df465bd0e2a2c"
+                "url": "https://github.com/symfony/messenger.git",
+                "reference": "804a8997f93313a8f7ed19e8cca3b44fdd18bdec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailjet-mailer/zipball/259754061bc1b6b3ebf251f2aa4df465bd0e2a2c",
-                "reference": "259754061bc1b6b3ebf251f2aa4df465bd0e2a2c",
+                "url": "https://api.github.com/repos/symfony/messenger/zipball/804a8997f93313a8f7ed19e8cca3b44fdd18bdec",
+                "reference": "804a8997f93313a8f7ed19e8cca3b44fdd18bdec",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.2",
-                "symfony/mailer": "^6.4|^7.0"
+                "psr/log": "^1|^2|^3",
+                "symfony/clock": "^6.4|^7.0"
+            },
+            "conflict": {
+                "symfony/console": "<6.4",
+                "symfony/event-dispatcher": "<6.4",
+                "symfony/event-dispatcher-contracts": "<2.5",
+                "symfony/framework-bundle": "<6.4",
+                "symfony/http-kernel": "<6.4",
+                "symfony/serializer": "<6.4"
             },
             "require-dev": {
-                "symfony/http-client": "^6.4|^7.0",
-                "symfony/webhook": "^6.4|^7.0"
+                "psr/cache": "^1.0|^2.0|^3.0",
+                "symfony/console": "^6.4|^7.0",
+                "symfony/dependency-injection": "^6.4|^7.0",
+                "symfony/event-dispatcher": "^6.4|^7.0",
+                "symfony/http-kernel": "^6.4|^7.0",
+                "symfony/process": "^6.4|^7.0",
+                "symfony/property-access": "^6.4|^7.0",
+                "symfony/rate-limiter": "^6.4|^7.0",
+                "symfony/routing": "^6.4|^7.0",
+                "symfony/serializer": "^6.4|^7.0",
+                "symfony/service-contracts": "^2.5|^3",
+                "symfony/stopwatch": "^6.4|^7.0",
+                "symfony/validator": "^6.4|^7.0"
             },
-            "type": "symfony-mailer-bridge",
+            "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Symfony\\Component\\Mailer\\Bridge\\Mailjet\\": ""
+                    "Symfony\\Component\\Messenger\\": ""
                 },
                 "exclude-from-classmap": [
                     "/Tests/"
@@ -4560,18 +4364,18 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "name": "Samuel Roze",
+                    "email": "samuel.roze@gmail.com"
                 },
                 {
                     "name": "Symfony Community",
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony Mailjet Mailer Bridge",
+            "description": "Helps applications send and receive messages to/from other applications or via message queues",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/mailjet-mailer/tree/v7.0.3"
+                "source": "https://github.com/symfony/messenger/tree/v7.0.4"
             },
             "funding": [
                 {
@@ -4587,7 +4391,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-23T15:02:46+00:00"
+            "time": "2024-02-26T07:52:39+00:00"
         },
         {
             "name": "symfony/mime",
@@ -7522,128 +7326,6 @@
             "time": "2024-01-23T15:02:46+00:00"
         },
         {
-            "name": "tijsverkoyen/css-to-inline-styles",
-            "version": "v2.2.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
-                "reference": "83ee6f38df0a63106a9e4536e3060458b74ccedb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/83ee6f38df0a63106a9e4536e3060458b74ccedb",
-                "reference": "83ee6f38df0a63106a9e4536e3060458b74ccedb",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "ext-libxml": "*",
-                "php": "^5.5 || ^7.0 || ^8.0",
-                "symfony/css-selector": "^2.7 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0 || ^7.5 || ^8.5.21 || ^9.5.10"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TijsVerkoyen\\CssToInlineStyles\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Tijs Verkoyen",
-                    "email": "css_to_inline_styles@verkoyen.eu",
-                    "role": "Developer"
-                }
-            ],
-            "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
-            "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
-            "support": {
-                "issues": "https://github.com/tijsverkoyen/CssToInlineStyles/issues",
-                "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/v2.2.7"
-            },
-            "time": "2023-12-08T13:03:43+00:00"
-        },
-        {
-            "name": "twig/cssinliner-extra",
-            "version": "v3.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twigphp/cssinliner-extra.git",
-                "reference": "419e3e98431da91e8051ffdb447725d10935285d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/cssinliner-extra/zipball/419e3e98431da91e8051ffdb447725d10935285d",
-                "reference": "419e3e98431da91e8051ffdb447725d10935285d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "symfony/deprecation-contracts": "^2.5|^3",
-                "tijsverkoyen/css-to-inline-styles": "^2.0",
-                "twig/twig": "^3.0"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^6.4|^7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "Resources/functions.php"
-                ],
-                "psr-4": {
-                    "Twig\\Extra\\CssInliner\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                }
-            ],
-            "description": "A Twig extension to allow inlining CSS",
-            "homepage": "https://twig.symfony.com",
-            "keywords": [
-                "css",
-                "inlining",
-                "twig"
-            ],
-            "support": {
-                "source": "https://github.com/twigphp/cssinliner-extra/tree/v3.9.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/twig/twig",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-12-10T19:34:32+00:00"
-        },
-        {
             "name": "twig/extra-bundle",
             "version": "v3.8.0",
             "source": {
@@ -7718,76 +7400,6 @@
             "time": "2023-11-21T14:02:01+00:00"
         },
         {
-            "name": "twig/inky-extra",
-            "version": "v3.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twigphp/inky-extra.git",
-                "reference": "95e489a56feaacff255deb1ffd9c7e2956985755"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/inky-extra/zipball/95e489a56feaacff255deb1ffd9c7e2956985755",
-                "reference": "95e489a56feaacff255deb1ffd9c7e2956985755",
-                "shasum": ""
-            },
-            "require": {
-                "lorenzo/pinky": "^1.0.5",
-                "php": ">=7.2.5",
-                "symfony/deprecation-contracts": "^2.5|^3",
-                "twig/twig": "^3.0"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^6.4|^7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "Resources/functions.php"
-                ],
-                "psr-4": {
-                    "Twig\\Extra\\Inky\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                }
-            ],
-            "description": "A Twig extension for the inky email templating engine",
-            "homepage": "https://twig.symfony.com",
-            "keywords": [
-                "email",
-                "emails",
-                "inky",
-                "twig"
-            ],
-            "support": {
-                "source": "https://github.com/twigphp/inky-extra/tree/v3.9.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/twig/twig",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-12-10T19:34:32+00:00"
-        },
-        {
             "name": "twig/twig",
             "version": "v3.8.0",
             "source": {
@@ -7860,59 +7472,6 @@
             "time": "2023-11-21T18:54:41+00:00"
         },
         {
-            "name": "twilio/sdk",
-            "version": "8.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "161fbeb588f367e35e70a86841406ff6f0810b14"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/161fbeb588f367e35e70a86841406ff6f0810b14",
-                "reference": "161fbeb588f367e35e70a86841406ff6f0810b14",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.0"
-            },
-            "require-dev": {
-                "guzzlehttp/guzzle": "^6.3 || ^7.0",
-                "phpunit/phpunit": ">=7.0 < 10"
-            },
-            "suggest": {
-                "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Twilio\\": "src/Twilio/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Twilio API Team",
-                    "email": "api@twilio.com"
-                }
-            ],
-            "description": "A PHP wrapper for Twilio's API",
-            "homepage": "https://github.com/twilio/twilio-php",
-            "keywords": [
-                "api",
-                "sms",
-                "twilio"
-            ],
-            "support": {
-                "issues": "https://github.com/twilio/twilio-php/issues",
-                "source": "https://github.com/twilio/twilio-php/tree/8.0.1"
-            },
-            "time": "2024-04-18T11:15:50+00:00"
-        },
-        {
             "name": "webmozart/assert",
             "version": "1.11.0",
             "source": {
@@ -7972,177 +7531,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "doctrine/data-fixtures",
-            "version": "1.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "bbcb74f2ac6dbe81a14b3c3687d7623490a0448f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/bbcb74f2ac6dbe81a14b3c3687d7623490a0448f",
-                "reference": "bbcb74f2ac6dbe81a14b3c3687d7623490a0448f",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/deprecations": "^0.5.3 || ^1.0",
-                "doctrine/persistence": "^2.0|^3.0",
-                "php": "^7.4 || ^8.0"
-            },
-            "conflict": {
-                "doctrine/dbal": "<3.5 || >=5",
-                "doctrine/orm": "<2.14 || >=4",
-                "doctrine/phpcr-odm": "<1.3.0"
-            },
-            "require-dev": {
-                "doctrine/annotations": "^1.12 || ^2",
-                "doctrine/coding-standard": "^12",
-                "doctrine/dbal": "^3.5 || ^4",
-                "doctrine/mongodb-odm": "^1.3.0 || ^2.0.0",
-                "doctrine/orm": "^2.14 || ^3",
-                "ext-sqlite3": "*",
-                "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^9.6.13 || ^10.4.2",
-                "symfony/cache": "^5.4 || ^6.3 || ^7",
-                "symfony/var-exporter": "^5.4 || ^6.3 || ^7",
-                "vimeo/psalm": "^5.9"
-            },
-            "suggest": {
-                "alcaeus/mongo-php-adapter": "For using MongoDB ODM 1.3 with PHP 7 (deprecated)",
-                "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
-                "doctrine/orm": "For loading ORM fixtures",
-                "doctrine/phpcr-odm": "For loading PHPCR ODM fixtures"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Common\\DataFixtures\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                }
-            ],
-            "description": "Data Fixtures for all Doctrine Object Managers",
-            "homepage": "https://www.doctrine-project.org",
-            "keywords": [
-                "database"
-            ],
-            "support": {
-                "issues": "https://github.com/doctrine/data-fixtures/issues",
-                "source": "https://github.com/doctrine/data-fixtures/tree/1.7.0"
-            },
-            "funding": [
-                {
-                    "url": "https://www.doctrine-project.org/sponsorship.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.patreon.com/phpdoctrine",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fdata-fixtures",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-11-24T11:18:31+00:00"
-        },
-        {
-            "name": "doctrine/doctrine-fixtures-bundle",
-            "version": "3.5.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-                "reference": "c808a0c85c38c8ee265cc8405b456c1d2b38567d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/c808a0c85c38c8ee265cc8405b456c1d2b38567d",
-                "reference": "c808a0c85c38c8ee265cc8405b456c1d2b38567d",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/data-fixtures": "^1.3",
-                "doctrine/doctrine-bundle": "^2.2",
-                "doctrine/orm": "^2.14.0 || ^3.0",
-                "doctrine/persistence": "^2.4|^3.0",
-                "php": "^7.4 || ^8.0",
-                "symfony/config": "^5.4|^6.0|^7.0",
-                "symfony/console": "^5.4|^6.0|^7.0",
-                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
-                "symfony/deprecation-contracts": "^2.1|^3",
-                "symfony/doctrine-bridge": "^5.4|^6.0|^7.0",
-                "symfony/http-kernel": "^5.4|^6.0|^7.0"
-            },
-            "conflict": {
-                "doctrine/dbal": "< 3"
-            },
-            "require-dev": {
-                "doctrine/coding-standard": "^12",
-                "phpstan/phpstan": "^1.10.39",
-                "phpunit/phpunit": "^9.6.13",
-                "symfony/phpunit-bridge": "^6.3.6",
-                "vimeo/psalm": "^5.15"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Bundle\\FixturesBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Doctrine Project",
-                    "homepage": "https://www.doctrine-project.org"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony DoctrineFixturesBundle",
-            "homepage": "https://www.doctrine-project.org",
-            "keywords": [
-                "Fixture",
-                "persistence"
-            ],
-            "support": {
-                "issues": "https://github.com/doctrine/DoctrineFixturesBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineFixturesBundle/tree/3.5.1"
-            },
-            "funding": [
-                {
-                    "url": "https://www.doctrine-project.org/sponsorship.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.patreon.com/phpdoctrine",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fdoctrine-fixtures-bundle",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-11-19T12:48:54+00:00"
-        },
         {
             "name": "masterminds/html5",
             "version": "2.8.1",
@@ -9899,6 +9287,71 @@
             "time": "2024-01-23T15:02:46+00:00"
         },
         {
+            "name": "symfony/css-selector",
+            "version": "v7.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/css-selector.git",
+                "reference": "ec60a4edf94e63b0556b6a0888548bb400a3a3be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/ec60a4edf94e63b0556b6a0888548bb400a3a3be",
+                "reference": "ec60a4edf94e63b0556b6a0888548bb400a3a3be",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\CssSelector\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Jean-François Simon",
+                    "email": "jeanfrancois.simon@sensiolabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Converts CSS selectors to XPath expressions",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/css-selector/tree/v7.0.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-01-23T15:02:46+00:00"
+        },
+        {
             "name": "symfony/debug-bundle",
             "version": "v7.0.3",
             "source": {
@@ -10351,6 +9804,7 @@
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.2",
+        "ext-cassandra": "*",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },

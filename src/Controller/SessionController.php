@@ -39,7 +39,7 @@ class SessionController extends AbstractController
 
 
         $currentDate = new DateTime('now', new DateTimeZone('UTC'));
-        $currentDate->setTime(0, 0, 0);
+        $currentDate->setTimezone(new DateTimeZone('Europe/Paris'));
         $session->setDate($currentDate);
 
         $currentTime = new DateTime('now', new DateTimeZone('UTC'));

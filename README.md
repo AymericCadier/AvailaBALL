@@ -3,5 +3,17 @@ Bienvenue sur le Git de Availaball !
 L'objectif de ce projet Symfony est de permettre aux utilisateurs de trouver des terrains de sport disponibles pour jouer au football, au basket, au tennis, etc.
 
 
-je ferais plus tard c'est juste pour avoir le fichier de prêt
+
 présentation des langages/technologies utilisées, diagramme de classe
+
+fonctionnalités actuelle (18/04) :
+Admin  : supprimer un compte et valider/refuser les évènements
+User : rud
+events : crd
+Security : login, register, logout
+maps(=playground) : juste un read (trois différents : index, foot et basket)
+messages : crud
+reset password (?) : tout dans le process
+sessions : create , end (~=delete)
+
+

@@ -38,7 +38,7 @@ class InscriptionController extends AbstractController
                 $user->getEmail(),
                 $user->getPassword()
             );
-            return $this->render('home/index.html.twig');
+            return $this->redirectToRoute('app_home');
         }
         return $this->render('security/inscriptionB.html.twig', [
             'form' => $form->createView(),
