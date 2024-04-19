@@ -1,19 +1,33 @@
 <?php
-
+// src/Controller/ContactController.php
 namespace App\Controller;
 
 use App\Service\MailerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
-
-
 class MailerController extends AbstractController
 {
-    #[Route('/email')]
+
+    #[Route('/contact', name: 'app_contact')]
+    public function contact(Request $request, MailerService $mailerService): Response
+    {
+        if ($request->isMethod('POST')) {
+            $mailerService->sendContactFormEmail(
+                $request->request->get('name'),
+                $request->request->get('email'),
+                $request->request->get('message')
+            );
+
+            return $this->redirectToRoute('app_home');
+        }
+
+        return $this->render('contact/index.html.twig');
+    }
+
+    #[Route('/email', name: 'app_email')]
     public function index(MailerService $mailerService) : Response
     {
         $mailerService->sendWelcomeEmail();
