@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Messages;
+use App\Entity\User;
 use App\Form\MessagesType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,8 +24,14 @@ class MessagesController extends AbstractController
     #[Route('/send', name: 'app_send_message')]
     public function send(Request $request, EntityManagerInterface $entityManager): Response
     {
+
         $message = new Messages;
-        $form = $this->createForm(MessagesType::class, $message);
+        $currentUser = $this->getUser();
+        $recipients = $entityManager->getRepository(User::class)->listOtherUsers($currentUser);
+
+        $form = $this->createForm(MessagesType::class, $message, [
+            'recipients' => $recipients,
+        ]);
 
         $form->handleRequest($request);
 
@@ -41,7 +48,8 @@ class MessagesController extends AbstractController
         }
 
         return $this->render('messages/send.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'currentUser' => $currentUser,
         ]);
     }
 

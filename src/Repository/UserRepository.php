@@ -50,6 +50,19 @@ class UserRepository extends ServiceEntityRepository
         return $this->findBy(['deleted_at' => null]);
     }
 
+    public function listOtherUsers($currentUser) {
+        $qb = $this->createQueryBuilder('u')
+            ->where('u.deleted_at IS NULL')
+            ->andWhere('u.id != :currentUserId')
+            ->setParameter('currentUserId', $currentUser->getId());
+
+        return $qb->getQuery()->getResult();
+    }
+
+
+
+
+
     public function getUser($email,$password){
         $user = $this->findOneBy(['email' => $email, 'password' => $password]);
         return $user;

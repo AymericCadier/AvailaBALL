@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Messages;
 use App\Entity\User;
+use App\Repository\UserRepository;
 use SebastianBergmann\CodeCoverage\Report\Text;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -31,6 +32,7 @@ class MessagesType extends AbstractType
             ->add('recipient', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'email',
+                'choices' => $options['recipients'],
             ])
             ->add('envoyer', SubmitType::class, [
                 "attr" => [
@@ -44,6 +46,7 @@ class MessagesType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Messages::class,
+            'recipients' => [],
         ]);
     }
 }
