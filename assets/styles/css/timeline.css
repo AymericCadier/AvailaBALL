@@ -41,10 +41,10 @@ h1{
 
 .timeline li {
     --stop: calc(100% / var(--length) * var(--i));
-    --h: 197; /* Teinte de la couleur d'origine */
-    --s: 22%; /* Saturation de la couleur d'origine */
-    --l: 55%; /* Luminosité plus claire pour la première couleur du dégradé */
-    --l2: 70%; /* Luminosité encore plus claire pour la deuxième couleur du dégradé */
+    --h: 170; /* Teinte de la couleur d'origine (ajustée pour une nuance plus verte) */
+    --s: 100%; /* Saturation de la couleur d'origine */
+    --l: 74%; /* Luminosité plus claire pour la première couleur du dégradé */
+    --l2: 85%; /* Luminosité encore plus claire pour la deuxième couleur du dégradé */
 
     --c1: hsl(var(--h), var(--s), var(--l));
     --c2: hsl(var(--h), var(--s), var(--l2));
