@@ -42,7 +42,7 @@ class UserRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
-    public function getUserId($id){
+    public function getUserById($id){
         return $this->find($id);
     }
 
