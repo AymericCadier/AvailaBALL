@@ -15,24 +15,11 @@ class MailerController extends AbstractController
     public function contact(Request $request, MailerService $mailerService): Response
     {
         if ($request->isMethod('POST')) {
-            $mailerService->sendContactFormEmail(
-                $request->request->get('name'),
-                $request->request->get('email'),
-                $request->request->get('message')
-            );
+            $mailerService->sendContactFormEmail($request);
 
             return $this->redirectToRoute('app_home');
         }
 
         return $this->render('contact/index.html.twig');
-    }
-
-    #[Route('/email', name: 'app_email')]
-    public function index(MailerService $mailerService) : Response
-    {
-        $mailerService->sendWelcomeEmail();
-        return $this->render('mailer/index.html.twig', [
-            'controller_name' => 'MailerController',
-        ]);
     }
 }
