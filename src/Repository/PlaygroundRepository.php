@@ -21,6 +21,10 @@ class PlaygroundRepository extends ServiceEntityRepository
         parent::__construct($registry, Playground::class);
     }
 
+
+    public function getPlaygroundById($id){
+        return $this->find($id);
+    }
     public function findPlaygroundsByType($type)
     {
         return $this->createQueryBuilder('p')
