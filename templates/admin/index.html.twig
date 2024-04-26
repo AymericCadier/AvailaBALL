@@ -7,96 +7,99 @@
 
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/css/test.css') }}">
-        <<link rel="stylesheet" href="{{ asset('styles/css/bouton.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/css/bouton.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/css/dropdown.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     {% endblock %}
 </head>
 
 {% block body %}
 <body style="background-color: black">
-    <div class="d-flex flex-row">
-        {% include 'base.html.twig' %}
+<div class="d-flex flex-row">
+    {% include 'base.html.twig' %}
 
-        <div class="flex-grow-1 main-body">
-            {% if app.user %}
-                <div class="page-content page-container" id="page-content">
-                    <div class="padding">
-                        <div class="row container d-flex justify-content-center">
-                            <div class="col-xl-9 col-md-12">
-                                <div class="card user-card-full">
-                                    <div class="row m-l-0 m-r-0">
-                                        <div class="col-sm-4 bg-c-lite-green user-profile">
-                                            <div class="card-block text-center text-white">
-                                                <div class="m-b-25">
-                                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
-                                                </div>
-                                                <h6 class="f-w-600">{{ app.user.fname }} {{ app.user.lname }}</h6>
-                                                <p>{% if 'ROLE_ADMIN' in app.user.roles %}Admin{% else %}Utilisateur{% endif %}</p>
-                                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+    <div class="flex-grow-1 main-body">
+        {% if app.user %}
+            <div class="page-content page-container" id="page-content">
+                <div class="padding">
+                    <div class="row container d-flex justify-content-center">
+                        <div class="col-xl-9 col-md-12">
+                            <div class="card user-card-full">
+                                <div class="row m-l-0 m-r-0">
+                                    <div class="col-sm-4 bg-c-lite-green user-profile">
+                                        <div class="card-block text-center text-white">
+                                            <div class="m-b-25">
+                                                <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
                                             </div>
+                                            <h6 class="f-w-600">{{ app.user.fname }} {{ app.user.lname }}</h6>
+                                            <p>{% if 'ROLE_ADMIN' in app.user.roles %}Admin{% else %}Utilisateur{% endif %}</p>
+                                            <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                         </div>
-                                        <div class="col-sm-8">
-                                            <div class="card-block">
-                                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information utilisateur</h6>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Prénom</p>
-                                                        <h6 class="text-muted f-w-400">{{ app.user.fname }}</h6>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Nom de famille</p>
-                                                        <h6 class="text-muted f-w-400">{{ app.user.lname }}</h6>
-                                                    </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="card-block">
+                                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information utilisateur</h6>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Prénom</p>
+                                                    <h6 class="text-muted f-w-400">{{ app.user.fname }}</h6>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Nom d'utilisateur</p>
-                                                        <h6 class="text-muted f-w-400">{{ app.user.nickname }}</h6>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Email</p>
-                                                        <h6 class="text-muted f-w-400">{{ app.user.email }}</h6>
-                                                    </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Nom de famille</p>
+                                                    <h6 class="text-muted f-w-400">{{ app.user.lname }}</h6>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Date de création</p>
-                                                        <h6 class="text-muted f-w-400">{{ app.user.createdAt|date('Y-m-d H:i:s') }}</h6>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <p class="m-b-10 f-w-600">Rôle</p>
-                                                        <h6 class="text-muted f-w-400">{% if 'ROLE_ADMIN' in app.user.roles %}Admin{% else %}Utilisateur{% endif %}</h6>
-                                                    </div>
-                                                </div>
-
                                             </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Nom d'utilisateur</p>
+                                                    <h6 class="text-muted f-w-400">{{ app.user.nickname }}</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Email</p>
+                                                    <h6 class="text-muted f-w-400">{{ app.user.email }}</h6>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Date de création</p>
+                                                    <h6 class="text-muted f-w-400">{{ app.user.createdAt|date('Y-m-d H:i:s') }}</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Rôle</p>
+                                                    <h6 class="text-muted f-w-400">{% if 'ROLE_ADMIN' in app.user.roles %}Admin{% else %}Utilisateur{% endif %}</h6>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                                {% if 'ROLE_ADMIN' in app.user.roles %}
-                                    <div class="row">
-                                        <div class="col-12 d-flex justify-content-around">
-                                            <a class="dropdown-item" href="{{ path('app_unseen_events') }}"><button class="submit-button">Valider les évènements</button></a>
-                                            <form method="POST" id="delete-user-form" class="d-flex align-items-center">
-                                                <select name="user_id" id="user-select" class="mr-2">
-                                                    {% for user in users %}
-                                                        <option value="{{ user.id }}">{{ user.nickname }}</option>
-                                                    {% endfor %}
-                                                </select>
-                                                <button type="submit" class="submit-button">Supprimer</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                {% endif %}
-
                             </div>
+                            {% if 'ROLE_ADMIN' in app.user.roles %}
+                                <div class="row">
+                                    <div class="col-12 d-flex justify-content-around align-items-center">
+                                        <div class="d-flex align-items-center mr-3">
+                                            <a class="dropdown-item" href="{{ path('app_unseen_events') }}"><button class="submit-button">Valider les évènements</button></a>
+                                        </div>
+                                        <form method="POST" id="delete-user-form" class="d-flex align-items-center">
+                                            <select name="user_id" id="user-select" class="mr-2">
+                                                {% for user in users %}
+                                                    <option value="{{ user.id }}">{{ user.nickname }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <button type="submit" class="submit-button">Supprimer</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            {% endif %}
+
                         </div>
                     </div>
-
                 </div>
-            {% endif %}
-        </div>
+
+            </div>
+        {% endif %}
     </div>
+</div>
 {% endblock %}
 
 <script>

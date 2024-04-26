@@ -8,116 +8,117 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('styles/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('styles/css/bouton.css') }}">
-
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     {% endblock %}
-    
 
 </head>
 <body style="background-color: #16191c; color: white">
 
 {% block body %}
-    <div class="d-flex flex-row">
-        {% include 'base.html.twig' %}
+<div class="d-flex flex-row">
+    {% include 'base.html.twig' %}
 
-        <div class="flex-grow-1">
+    <div class="flex-grow-1">
 
-            <div style="background: url('images/Banniere.jpg') center center no-repeat; background-size: cover; height: 40vh;">
-                <section class="text">
-                    <br>
-                    <br>
-                    <br>
-                    <h1>Availaball</h1>
-                    <p>Basket/Foot</p>
-                    <p>Ball</p>
+        <div style="background: url('images/Banniere.jpg') center center no-repeat; background-size: cover; height: 40vh;">
+            <section class="text">
+                <br>
+                <br>
+                <br>
+                <h1>Availaball</h1>
+                <p>Basket/Foot</p>
+                <p>Ball</p>
 
-                </section>
-            </div>
-            <br>
-            <br>
-            <div class="titre">
-                <h1>Accueil</h1>
-                <p>Bienvenue sur l'application de localisation des terrains de sport</p>
-            </div>
+            </section>
+        </div>
+        <br>
+        <br>
+        <div class="titre">
+            <h1>Accueil</h1>
+            <p>Bienvenue sur l'application de localisation des terrains de sport</p>
+        </div>
 
-            <br>
-            <br>
-            <div class="container section-padding">
-                <div class="row">
-                    <div class="col-lg-6">
+        <br>
+        <br>
+        <div class="container section-padding">
+            <div class="row">
+                <div class="col-lg-6">
 
-                        <img src="images/Ant.png" alt="Basket" class="img-fluid">
-                    </div>
-                    <div class="col-lg-6" style="background-color: #212529">
-                        <br>
-                        <br>
-                        <br>
-                        <h2 class="heading-section">Basket-ball</h2>
-                        <p>
-                            La passion du basketball vous anime, vous vagabondez dans Paris, ballon en main, à la recherche d'un terrain libre. Chaque coin de rue pourrait être l'arène de vos exploits, mais la réalité est souvent moins clémente : tous semblent occupés ou hors d'accès. Cette quête du terrain parfait devient alors un jeu en soi, teinté d'espoir et de détermination.</p>
-                        <a href="{{ path('app_maps_basket') }}"><button class="submit-button">Voir les terrains</button></a>
-                    </div>
+                    <img src="images/Ant.png" alt="Basket" class="img-fluid">
                 </div>
-                <br><br><br><br>
-                <div class="row">
-                    <div class="col-lg-6" style="background-color: #212529">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <h2 class="heading-section">Football</h2>
-                        <p>
-                            Le football est un sport qui se joue à 11 contre 11, avec un ballon rond. Le but du jeu est de marquer des buts en faisant passer le ballon dans les buts adverses. Le football est un sport collectif qui demande une grande cohésion d'équipe et une bonne condition physique. Il est très populaire dans le monde entier et est souvent considéré comme le sport le plus populaire au monde.</p>
-                        <a href="{{ path('app_maps_foot') }}"><button class="submit-button">Voir les terrains</button></a>
-                    </div>
-                    <div class="col-lg-6">
-                        <img src="images/Sonn.png" alt="Football" class="img-fluid">
-                    </div>
+                <div class="col-lg-6" style="background-color: #212529">
+                    <br>
+                    <br>
+                    <br>
+                    <h2 class="heading-section">Basket-ball</h2>
+                    <p>
+                        La passion du basketball vous anime, vous vagabondez dans Paris, ballon en main, à la recherche d'un terrain libre. Chaque coin de rue pourrait être l'arène de vos exploits, mais la réalité est souvent moins clémente : tous semblent occupés ou hors d'accès. Cette quête du terrain parfait devient alors un jeu en soi, teinté d'espoir et de détermination.</p>
+                    <a href="{{ path('app_maps_basket') }}"><button class="submit-button">Voir les terrains</button></a>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="row">
+                <div class="col-lg-6" style="background-color: #212529">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2 class="heading-section">Football</h2>
+                    <p>
+                        Le football est un sport qui se joue à 11 contre 11, avec un ballon rond. Le but du jeu est de marquer des buts en faisant passer le ballon dans les buts adverses. Le football est un sport collectif qui demande une grande cohésion d'équipe et une bonne condition physique. Il est très populaire dans le monde entier et est souvent considéré comme le sport le plus populaire au monde.</p>
+                    <a href="{{ path('app_maps_foot') }}"><button class="submit-button">Voir les terrains</button></a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="images/Sonn.png" alt="Football" class="img-fluid">
+                </div>
             </div>
             <br>
             <br>
             <br>
-                <hr style="color: white">
+            <hr style="color: white">
             <br><br><br>
-                <h1 align="center">Terrains</h1>
-                <p align="center">Voici quelque terrains coup de coeur de ce mois ci:</p>
-                <div class="wrapper">
+            <h1 align="center">Terrains</h1>
+            <p align="center">Voici quelque terrains coup de coeur de ce mois ci:</p>
+            <div class="wrapper">
 
-                    <i id="left" class="fa-solid fa-angle-left"></i>
-                    <ul class="carousel">
-                        {% for playground in playgrounds %}
-                            <li class="card">
-                                <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
-                                <h2>{{ playground.name }}</h2>
-                                <span>Terrain de {{ playground.type }}</span>
-                            </li>
-                        {% endfor %}
-                        <p align="center">Voici quelque terrains coup de coeur de ce mois ci :</p>
-                    </ul>
-                    <i id="right" class="fa-solid fa-angle-right"></i>
-                </div>
+                <i id="left" class="fa-solid fa-angle-left"></i>
+                <ul class="carousel">
+                    {% for playground in playgrounds %}
+                        <li class="card">
+                            <div class="img"><img src="images/logoo.png" alt="img" draggable="false"></div>
+                            <h2>{{ playground.name }}</h2>
+                            <span>Terrain de {{ playground.type }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <i id="right" class="fa-solid fa-angle-right"></i>
+            </div>
 
-                <hr style="color: white">
-
-                
+            <hr style="color: white">
 
 
 
 
-                    <!-- Credits Section -->
+
+
+            <!-- Credits Section -->
 
 
             <!-- Bootstrap Bundle with Popper -->
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
 
-            </body>
 
-        </div>
 
-    </div>
+</div>
+
+</div>
+{% endblock %}
+</div></body>
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('styles/js/accueil.js') }}"></script>
 {% endblock %}
 
-</body>
 </html>
