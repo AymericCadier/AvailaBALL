@@ -1,0 +1,45 @@
+.offcanvas {
+    background-color: #16191c !important;
+    color: #fff;
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid #6c757d;
+}
+
+.offcanvas-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+}
+
+.btn-close {
+    color: #fff;
+    opacity: 1;
+}
+
+.btn-close:focus {
+    box-shadow: none;
+}
+
+.offcanvas-body {
+    padding: 0.5rem 1rem;
+}
+
+.list-group-item {
+    color: #fff;
+
+}
+
+.list-group-item:hover {
+    background-color: #5a6268;
+}
+
+.list-group-item.active {
+    background-color: #282c34;
+    font-weight: 700;
+}
+
+.list-group-item-action {
+    padding: 0.75rem 1.25rem;
+}

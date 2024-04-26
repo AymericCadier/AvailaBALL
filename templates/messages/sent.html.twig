@@ -8,6 +8,7 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('styles/css/test.css') }}">
             <link rel="stylesheet" href="{{ asset('styles/css/bouton.css') }}">
+            <link rel="stylesheet" href="{{ asset('styles/css/dashboard.css') }}">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
         {% endblock %}
     </head>
@@ -87,7 +88,7 @@
             <h2 class="offcanvas-title" id="offcanvasExampleLabel">Mes dossiers</h2>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body">
+        <div class="offcanvas-body" >
             <div class="list-group">
                 <a href="{{ path("app_messages") }}" class="list-group-item
                     list-group-item-action">Accueil</a>
