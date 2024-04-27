@@ -21,13 +21,6 @@ class InscriptionType extends AbstractType
             ->add('nickname', null, ['label' => false])
             ->add('email', null, ['label' => false])
             ->add('password', null, ['label' => false])
-            /*->add('confirmPassword')
-            ->add('created_at')
-            ->add('deleted_at')
-            ->add('roles', HiddenType::class, [
-                'data' => ['ROLE_USER'],
-            ]) */
-
             ->add('submit', SubmitType::class, [
                 'label' => 'S\'inscrire',
                 'attr' => ['class' => 'btn btn-primary'],

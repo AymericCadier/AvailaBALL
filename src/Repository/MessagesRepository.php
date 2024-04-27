@@ -21,39 +21,6 @@ class MessagesRepository extends ServiceEntityRepository
         parent::__construct($registry, Messages::class);
     }
 
-    public function findMessagesBySessionId($id)
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.id_session = :id')
-            ->setParameter('id', $id)
-            ->orderBy('m.id', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
-    public function findMessagesById($id)
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.id = :id')
-            ->setParameter('id', $id)
-            ->orderBy('m.id', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
-    public function findMessagesByTime($time)
-    {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.sent_at = :time')
-            ->setParameter('time', $time)
-            ->orderBy('m.id', 'ASC')
-            ->getQuery()
-            ->getResult()
-            ;
-    }
-
 //    /**
 //     * @return Message[] Returns an array of Message objects
 //     */

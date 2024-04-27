@@ -83,27 +83,6 @@ class Playground
         return $this->events;
     }
 
-    public function addEvent(Event $event): static
-    {
-        if (!$this->events->contains($event)) {
-            $this->events->add($event);
-            $event->setIdPlayground($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEvent(Event $event): static
-    {
-        if ($this->events->removeElement($event)) {
-            // set the owning side to null (unless already changed)
-            if ($event->getIdPlayground() === $this) {
-                $event->setIdPlayground(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Session>
@@ -113,27 +92,6 @@ class Playground
         return $this->sessions;
     }
 
-    public function addSession(Session $session): static
-    {
-        if (!$this->sessions->contains($session)) {
-            $this->sessions->add($session);
-            $session->setIdPlayground($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSession(Session $session): static
-    {
-        if ($this->sessions->removeElement($session)) {
-            // set the owning side to null (unless already changed)
-            if ($session->getIdPlayground() === $this) {
-                $session->setIdPlayground(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getType(): ?string
     {

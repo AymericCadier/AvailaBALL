@@ -21,18 +21,6 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
-
-    public function findEventsByPlaygroundId($id)
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.id_playground = :id')
-            ->setParameter('id', $id)
-            ->orderBy('e.id', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
     public function listValidEvents(){
         return $this->createQueryBuilder('e')
             ->andWhere('e.valid=1')

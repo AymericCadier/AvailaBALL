@@ -50,7 +50,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $sessions;
 
 
-    // Ajout du champ confirmPassword avec validation
+
     #[Assert\EqualTo(propertyPath: 'password', message: "Le mot de passe et sa confirmation doivent correspondre.")]
     #[Assert\NotBlank]
     private ?string $confirmPassword = null;

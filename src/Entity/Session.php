@@ -136,25 +136,4 @@ class Session
         return $this->messages;
     }
 
-    public function addMessage(Message $message): static
-    {
-        if (!$this->messages->contains($message)) {
-            $this->messages->add($message);
-            $message->setIdSession($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMessage(Message $message): static
-    {
-        if ($this->messages->removeElement($message)) {
-            // set the owning side to null (unless already changed)
-            if ($message->getIdSession() === $this) {
-                $message->setIdSession(null);
-            }
-        }
-
-        return $this;
-    }
 }

@@ -86,7 +86,7 @@
                     buttonsDiv.style.display = "block";
                     selectedTerrainInput.value = selectElement.value;
 
-                    // Masquer le bouton "Je n'y suis plus" si aucune session active et un terrain est sélectionné
+
                     if (!{% if hasActiveSession %}true{% else %}false{% endif %}) {
                         document.querySelector('#endSessionForm').style.display = 'none';
                         document.querySelector('#createSessionForm').style.display = 'block';
@@ -97,7 +97,7 @@
                 }
             }
 
-            // Afficher ou masquer le bouton initial en fonction de hasActiveSession
+
             {% if hasActiveSession %}
             document.getElementById("buttonsDiv").style.display = "block";
             document.getElementById("terrainSelect").classList.add("d-none");
