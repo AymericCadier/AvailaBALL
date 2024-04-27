@@ -49,12 +49,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Session::class)]
     private Collection $sessions;
 
-
-
-    #[Assert\EqualTo(propertyPath: 'password', message: "Le mot de passe et sa confirmation doivent correspondre.")]
-    #[Assert\NotBlank]
-    private ?string $confirmPassword = null;
-
     #[ORM\OneToMany(mappedBy: 'sender', targetEntity: Messages::class, orphanRemoval: true)]
     private Collection $sent;
 
@@ -66,18 +60,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->sessions = new ArrayCollection();
         $this->sent = new ArrayCollection();
         $this->received = new ArrayCollection();
-    }
-
-    public function getConfirmPassword(): ?string
-    {
-        return $this->confirmPassword;
-    }
-
-    public function setConfirmPassword(?string $confirmPassword): static
-    {
-        $this->confirmPassword = $confirmPassword;
-
-        return $this;
     }
 
     public function getId(): ?int
