@@ -1,7 +1,17 @@
-Bienvenue sur le Git de Availaball !
+# Bienvenue sur le Git de Availaball !
 
-L'objectif de ce projet Symfony est de permettre aux utilisateurs de trouver des terrains de sport disponibles pour jouer au football, au basket, au tennis, etc. Ils peuvent démarrer une session sur ces terrains, et aussi créer des évènements pour ceux-ci (par exemple un tournoi)
+### L'objectif de ce projet Symfony est de permettre aux utilisateurs de trouver des terrains de sport disponibles pour jouer au football, au basket, au tennis, etc. Ils peuvent démarrer une session sur ces terrains, et aussi créer des évènements pour ceux-ci (par exemple un tournoi)
 
+
+# Structure et modélisation
+
+- **Nous avons implémenté une structure MVC utilisant la bibliothèque twig**
+
+
+- **Voici le modèle E/R associé à notre base de données :**
+
+  
+![image](https://github.com/AymericCadier/AvailaBALL/assets/145613132/eb4a8a2d-1bc0-4293-958f-a1003c637166)
 
 
 # Nos fonctionnalités :
