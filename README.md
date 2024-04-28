@@ -63,3 +63,9 @@
 A noter que les étapes 4 à 6 peuvent être évitées si vous importez le fichier sql fourni à la racine 
 
 
+#Extras
+
+Nous avons mis en place un système de contact dans lequel les utilisateurs peuvent nous envoyer des retours que nous recevrons par mail (à l'aide de l'api mailjet). Si vous désirez vérifier l'effectivité de cette fonctionnalité, voici le mail associé et son mot de passe :
+- mail : adrian-jimenez-symfony@outlook.fr
+- Availaball*2024
+
