@@ -60,12 +60,14 @@
 6. Installez les fixtures avec la commande `php bin/console doctrine:fixtures:load` 
 (_pour assurer leur insertion, il faut temporairement désactiver l'auto-incrémentation des clés primaires de la table User et Playground_)
 
-A noter que les étapes 4 à 6 peuvent être évitées si vous importez le fichier sql fourni à la racine 
+_A noter que les étapes 4 à 6 peuvent être évitées si vous importez le fichier sql fourni à la racine_
 
 
-#Extras
+# Extras
 
 Nous avons mis en place un système de contact dans lequel les utilisateurs peuvent nous envoyer des retours que nous recevrons par mail (à l'aide de l'api mailjet). Si vous désirez vérifier l'effectivité de cette fonctionnalité, voici le mail associé et son mot de passe :
 - mail : adrian-jimenez-symfony@outlook.fr
 - Availaball*2024
+
+_A noter que l'api fonctionnant de manière irrégulière, il est probable qu'il faille faire deux ou trois envois pour recevoir un mail_
 
