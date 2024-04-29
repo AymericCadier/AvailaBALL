@@ -62,6 +62,7 @@
 
 _A noter que les étapes 4 à 6 peuvent être évitées si vous importez le fichier sql fourni à la racine_
 
+7. Mettre en place un virtual host pour ce projet (dans le cas contraire, le projet ne fonctionnant pas)
 
 # Extras
 
