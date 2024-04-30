@@ -64,7 +64,11 @@ _A noter que les étapes 4 à 6 peuvent être évitées si vous importez le fich
 
 7. Mettre en place un virtual host pour ce projet (dans le cas contraire, le projet ne fonctionnant pas)
 
+8. Pour accéder aux fonctionnalités admin, soit se connecter au compte "b@b.b" (avec le mdp : "b"), soit créer votre compte et dans votre bd locale lui ajouter le rôle "ROLE_ADMIN" (dans la table user)
+
 # Extras
+
+Ci-joint vous trouverez le lien d'invitation vers l'outil de gestion de projet utilisé : https://www.notion.so/invite/50e4fe500267bafc271f0c040c359dbb68e1c6ae
 
 Nous avons mis en place un système de contact dans lequel les utilisateurs peuvent nous envoyer des retours que nous recevrons par mail (à l'aide de l'api mailjet). Si vous désirez vérifier l'effectivité de cette fonctionnalité, voici le mail associé et son mot de passe :
 - mail : adrian-jimenez-symfony@outlook.fr
